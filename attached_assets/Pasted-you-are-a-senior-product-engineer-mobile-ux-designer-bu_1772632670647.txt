@@ -1,0 +1,108 @@
+you are a senior product engineer + mobile ux designer building a high-performance gambling-style web app MVP.
+
+goal:
+build a fast, smooth, casino-style gambling web app targeting filipino users. the app should FEEL like a native android app (material design, gestures, transitions), not a normal website.
+
+platform:
+- web app (PWA-ready)
+- optimized for mobile first (android priority)
+- runs smoothly on low to mid-range phones
+- installable like a native app
+
+tech stack (suggest + use best defaults):
+- frontend: react + vite or next.js (app router)
+- animations: framer motion / css gpu animations
+- styling: tailwind + material-inspired components
+- state: lightweight global state (zustand or equivalent)
+- backend: node.js + express or serverless api
+- database: postgres or firebase (auth + balance)
+- realtime updates for games (websockets or polling)
+- sound effects with mute toggle
+- offline-safe UI (graceful handling)
+
+design & ux (VERY IMPORTANT):
+- android-native look & feel (material design)
+- bottom navigation bar (home, games, wallet, profile)
+- smooth page transitions (slide, fade, scale)
+- haptic-style feedback (visual/sound cues)
+- dark mode default (casino vibe)
+- big buttons, thumb-friendly UI
+- fast loading, no jank, no lag
+
+games to include (MVP):
+1. slots
+   - simple 3–5 reel slot
+   - animated spinning reels
+   - configurable win chances
+   - sound + win animation
+2. dice roll
+   - user chooses over/under
+   - animated dice roll
+   - instant result reveal
+3. plinko
+   - falling ball physics-style animation
+   - multipliers at bottom
+   - smooth drop animation
+
+game logic requirements:
+- provably fair logic structure (seed-based or pseudo-rng explanation)
+- configurable house edge
+- instant balance update
+- bet amount presets (₱10, ₱50, ₱100, ₱500)
+- win / loss animations
+
+wallet system:
+- virtual balance system (MVP = no real money initially)
+- top-up simulation (for testing)
+- transaction history
+- win/loss logs
+- balance always visible in header
+
+auth & user system:
+- email + password auth
+- optional guest mode
+- user profile page
+- username + avatar
+- session persistence
+
+admin / config (hidden):
+- adjust odds & multipliers
+- enable/disable games
+- monitor total bets & wins
+- basic anti-abuse logic
+
+performance requirements:
+- 60fps animations
+- minimal api calls
+- lazy loading for games
+- code splitting
+- optimized assets
+
+security basics:
+- prevent client-side balance tampering
+- server-side bet validation
+- rate limiting
+- basic bot protection
+
+compliance considerations:
+- age gate (18+ modal)
+- responsible gaming disclaimer
+- no real-money payouts in MVP
+
+output requirements:
+- full project structure
+- frontend + backend code
+- database schema
+- game logic explanations
+- animation implementation
+- ui components
+- step-by-step setup instructions
+- environment variables
+- deployment-ready configuration
+
+IMPORTANT:
+prioritize SPEED, SMOOTHNESS, and “native app” FEEL.
+this should feel like a real casino app filipinos would actually use.
+avoid overengineering. focus on MVP that feels premium.
+
+build this as if it will be shipped.
