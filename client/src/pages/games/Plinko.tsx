@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAppStore } from "@/lib/store";
 import { Coins, AlertCircle, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
+import { useAudio } from "@/hooks/use-audio";
+import confetti from "canvas-confetti";
 
 // Simple Plinko physics mockup
 const ROWS = 8;
@@ -10,6 +12,7 @@ const MULTIPLIERS = [10, 3, 1.5, 0.5, 0.2, 0.5, 1.5, 3, 10];
 
 export default function Plinko() {
   const { balance, updateBalance, addTransaction } = useAppStore();
+  const { playSound } = useAudio();
   const [isDropping, setIsDropping] = useState(false);
   const [betAmount, setBetAmount] = useState(50);
   const [balls, setBalls] = useState<{ id: string; path: number[], resultIndex: number }[]>([]);
@@ -21,20 +24,18 @@ export default function Plinko() {
 
     updateBalance(-betAmount);
     setIsDropping(true);
+    playSound('drop');
 
     // Generate path
     let currentPos = 0;
     const path = [currentPos];
     
     for (let i = 0; i < ROWS; i++) {
-      // 50/50 chance to go left or right
       const dir = Math.random() > 0.5 ? 0.5 : -0.5;
       currentPos += dir;
       path.push(currentPos);
     }
 
-    // Map final position to multiplier index
-    // Final position ranges from -4 to 4 (for 8 rows)
     const normalizedPos = currentPos + (ROWS / 2);
     const resultIndex = Math.max(0, Math.min(MULTIPLIERS.length - 1, Math.round(normalizedPos)));
     
@@ -46,21 +47,33 @@ export default function Plinko() {
 
     setBalls(prev => [...prev, newBall]);
 
-    // Handle win after animation
     setTimeout(() => {
       const won = betAmount * MULTIPLIERS[resultIndex];
+      const isWin = MULTIPLIERS[resultIndex] >= 1;
+
       if (won > 0) {
         updateBalance(won);
-        addTransaction(won, won > betAmount ? 'win' : 'loss');
+        addTransaction(won, MULTIPLIERS[resultIndex] > 1 ? 'win' : 'loss');
+        
+        if (MULTIPLIERS[resultIndex] >= 1.5) {
+          playSound('win');
+          confetti({
+            particleCount: 40,
+            spread: 50,
+            origin: { y: 0.8 },
+            colors: ['#F43F5E', '#FB7185']
+          });
+        } else if (MULTIPLIERS[resultIndex] < 1) {
+          playSound('loss');
+        }
       }
       setIsDropping(false);
       
-      // Remove ball after a while
       setTimeout(() => {
         setBalls(prev => prev.filter(b => b.id !== newBall.id));
       }, 2000);
       
-    }, ROWS * 300); // Wait for animation to finish
+    }, ROWS * 300); 
   };
 
   return (

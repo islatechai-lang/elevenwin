@@ -4,9 +4,11 @@ import { useAppStore } from "@/lib/store";
 import { Coins, AlertCircle, ArrowLeft } from "lucide-react";
 import { Link } from "wouter";
 import confetti from "canvas-confetti";
+import { useAudio } from "@/hooks/use-audio";
 
 export default function Dice() {
   const { balance, updateBalance, addTransaction } = useAppStore();
+  const { playSound } = useAudio();
   const [isRolling, setIsRolling] = useState(false);
   const [betAmount, setBetAmount] = useState(50);
   const [prediction, setPrediction] = useState<'over' | 'under'>('over');
@@ -15,8 +17,6 @@ export default function Dice() {
 
   const betPresets = [10, 50, 100, 500];
   
-  // Basic multiplier calculation (configurable house edge)
-  // Win chance: Over 50 = 49%, Under 50 = 49% (2% house edge)
   const multiplier = 1.98; 
 
   const rollDice = () => {
@@ -25,11 +25,11 @@ export default function Dice() {
     setIsRolling(true);
     setLastRoll(null);
     updateBalance(-betAmount);
+    playSound('roll');
 
     if (navigator.vibrate) navigator.vibrate(20);
 
     setTimeout(() => {
-      // Provably fair placeholder - Random 1-100
       const result = Math.floor(Math.random() * 100) + 1;
       setLastRoll(result);
       setIsRolling(false);
@@ -40,16 +40,18 @@ export default function Dice() {
         const won = betAmount * multiplier;
         updateBalance(won);
         addTransaction(won, 'win');
+        playSound('win');
         
         if (navigator.vibrate) navigator.vibrate([50, 50, 50]);
         confetti({
-          particleCount: 50,
+          particleCount: 80,
           spread: 60,
           origin: { y: 0.7 },
           colors: ['#10B981', '#34D399']
         });
       } else {
         addTransaction(betAmount, 'loss');
+        playSound('loss');
         if (navigator.vibrate) navigator.vibrate(200);
       }
     }, 1500);

@@ -4,6 +4,7 @@ import { useAppStore } from "@/lib/store";
 import { Coins, AlertCircle, ArrowLeft } from "lucide-react";
 import confetti from "canvas-confetti";
 import { Link } from "wouter";
+import { useAudio } from "@/hooks/use-audio";
 
 const SYMBOLS = ["🍒", "🍋", "🔔", "🍉", "💎", "7️⃣"];
 const REEL_COUNT = 3;
@@ -11,6 +12,7 @@ const SPIN_DURATION = 2000;
 
 export default function Slots() {
   const { balance, updateBalance, addTransaction } = useAppStore();
+  const { playSound } = useAudio();
   const [reels, setReels] = useState(["🍒", "🍒", "🍒"]);
   const [isSpinning, setIsSpinning] = useState(false);
   const [betAmount, setBetAmount] = useState(50);
@@ -24,12 +26,10 @@ export default function Slots() {
     setIsSpinning(true);
     setWinAmount(0);
     updateBalance(-betAmount);
+    playSound('spin');
 
-    // Audio cue would go here
-
+    // Staggered reel stop logic for immersive feel
     setTimeout(() => {
-      // Logic for provably fair simulation (configurable house edge)
-      // MVP: Simple random logic with slight house edge
       const newReels = Array(REEL_COUNT).fill(0).map(() => 
         SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)]
       );
@@ -39,7 +39,6 @@ export default function Slots() {
 
       // Check win
       if (newReels[0] === newReels[1] && newReels[1] === newReels[2]) {
-        // Jackpot - 3 matching
         let multiplier = 5;
         if (newReels[0] === "7️⃣") multiplier = 20;
         if (newReels[0] === "💎") multiplier = 10;
@@ -48,24 +47,25 @@ export default function Slots() {
         setWinAmount(won);
         updateBalance(won);
         addTransaction(won, 'win');
+        playSound('win');
         
-        // Haptic feedback & Confetti
         if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
         confetti({
-          particleCount: 100,
-          spread: 70,
+          particleCount: 150,
+          spread: 80,
           origin: { y: 0.6 },
           colors: ['#FFD700', '#FFA500', '#FF8C00']
         });
       } else if (newReels[0] === newReels[1] || newReels[1] === newReels[2]) {
-        // Small win - 2 matching adjacent
         const won = betAmount * 1.5;
         setWinAmount(won);
         updateBalance(won);
         addTransaction(won, 'win');
+        playSound('win');
         if (navigator.vibrate) navigator.vibrate(50);
       } else {
         addTransaction(betAmount, 'loss');
+        playSound('loss');
       }
 
     }, SPIN_DURATION);

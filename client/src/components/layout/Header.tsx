@@ -1,9 +1,9 @@
 import { useAppStore } from "@/lib/store";
-import { Coins, Bell } from "lucide-react";
+import { Coins, Bell, Volume2, VolumeX } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Header() {
-  const { balance } = useAppStore();
+  const { balance, isMuted, toggleMute } = useAppStore();
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-card border-b border-border/50 material-shadow">
@@ -14,7 +14,14 @@ export function Header() {
         <span className="font-display font-bold text-lg text-foreground tracking-wider">SPIN<span className="text-primary">&</span>WIN</span>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
+        <button 
+          onClick={toggleMute}
+          className="p-2 text-muted-foreground hover:text-foreground transition-colors rounded-full active:bg-secondary"
+        >
+          {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+        </button>
+
         <motion.div 
           key={balance}
           initial={{ scale: 1.2, color: "var(--color-primary)" }}
