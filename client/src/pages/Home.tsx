@@ -35,7 +35,7 @@ const GAMES = [
     id: "quantum11",
     name: "Quantum 11",
     description: "High Voltage Hits",
-    image: "/images/quantum-cover.png",
+    image: "/images/quantum11-cover.png",
     color: "from-blue-500/20 to-cyan-600/20",
     path: "/games/quantum11",
     players: "3.4k",

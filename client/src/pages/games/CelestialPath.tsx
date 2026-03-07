@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAppStore } from "@/lib/store";
-import { Coins, AlertCircle, Stars, ArrowUpCircle } from "lucide-react";
+import { Coins, AlertCircle, Stars, ArrowUpCircle, ArrowLeft, Trophy } from "lucide-react";
 import { useAudio } from "@/hooks/use-audio";
 import confetti from "canvas-confetti";
 
