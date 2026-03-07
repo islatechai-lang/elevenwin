@@ -1,21 +1,23 @@
 import { Switch, Route } from "wouter";
-import { queryClient } from "./lib/queryClient";
+import { queryClient } from "@/lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 
-import { MobileLayout } from "./components/layout/MobileLayout";
-import Home from "./pages/Home";
-import Slots from "./pages/games/Slots";
-import Dice from "./pages/games/Dice";
-import Plinko from "./pages/games/Plinko";
-import Quantum11 from "./pages/games/Quantum11";
-import CelestialPath from "./pages/games/CelestialPath";
-import HarmonicWheel from "./pages/games/HarmonicWheel";
-import LifePathMatrix from "./pages/games/LifePathMatrix";
-import Wallet from "./pages/Wallet";
-import Profile from "./pages/Profile";
+import { MobileLayout } from "@/components/layout/MobileLayout";
+import Home from "@/pages/Home";
+import Slots from "@/pages/games/Slots";
+import Dice from "@/pages/games/Dice";
+import Plinko from "@/pages/games/Plinko";
+import Quantum11 from "@/pages/games/Quantum11";
+import CelestialPath from "@/pages/games/CelestialPath";
+import HarmonicWheel from "@/pages/games/HarmonicWheel";
+import LifePathMatrix from "@/pages/games/LifePathMatrix";
+import Wallet from "@/pages/Wallet";
+import Profile from "@/pages/Profile";
+
+import { useAuth } from "@/hooks/use-auth";
 
 function Router() {
   return (
@@ -39,6 +41,7 @@ function Router() {
 }
 
 function App() {
+  useAuth();
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
