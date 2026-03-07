@@ -72,7 +72,7 @@ export default function Dice() {
   return (
     <div className="flex flex-col h-screen bg-[#0a0a0f] text-white overflow-hidden">
       {/* Header */}
-      <div className="flex justify-between items-center px-4 py-3 shrink-0">
+      <div className="flex justify-between items-center px-4 py-2 shrink-0">
         <button onClick={() => window.history.back()} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
           <ArrowLeft className="w-5 h-5 text-emerald-400" />
         </button>
@@ -113,7 +113,7 @@ export default function Dice() {
 
       {/* 3D Dice Game Area - takes remaining space */}
       <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden px-4 min-h-0">
-        <div className="bg-gradient-to-br from-slate-900 to-black border-2 border-slate-800 rounded-3xl p-4 shadow-[inset_0_10px_20px_rgba(0,0,0,0.8)] relative overflow-hidden flex flex-col items-center justify-center w-full max-w-md aspect-square max-h-[45vh]">
+        <div className="bg-gradient-to-br from-slate-900 to-black border-2 border-slate-800 rounded-3xl p-3 shadow-[inset_0_10px_20px_rgba(0,0,0,0.8)] relative overflow-hidden flex flex-col items-center justify-center w-full max-w-md aspect-square max-h-[40vh]">
           <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.1)_0%,transparent_60%)] z-0" />
 
           {/* Stats overlay */}
@@ -166,9 +166,9 @@ export default function Dice() {
       </div>
 
       {/* Bottom Controls - fixed to bottom, compact */}
-      <div className="shrink-0 px-4 pb-4 space-y-3">
+      <div className="shrink-0 px-4 pb-3 space-y-2">
         {/* Slider */}
-        <div className="relative h-10 flex items-center select-none touch-none">
+        <div className="relative h-8 flex items-center select-none touch-none">
           <div className="absolute inset-x-0 h-[3px] bg-white/10 rounded-full overflow-hidden">
             <div
               className={`absolute h-full transition-all duration-200 ${prediction === 'under' ? 'bg-emerald-500/40 left-0' : 'bg-emerald-500/40 right-0'}`}
@@ -197,11 +197,11 @@ export default function Dice() {
         </div>
 
         {/* Over/Under Toggle */}
-        <div className="flex gap-2 p-1 bg-white/5 rounded-2xl">
+        <div className="flex gap-2 p-1 bg-white/5 rounded-xl">
           <button
             onClick={() => setPrediction('under')}
             disabled={isRolling}
-            className={`flex-1 py-2.5 rounded-xl font-black transition-all text-xs uppercase ${prediction === 'under'
+            className={`flex-1 py-2 rounded-lg font-black transition-all text-xs uppercase ${prediction === 'under'
               ? 'bg-white text-black shadow-lg scale-[1.02]'
               : 'text-white/40 active:scale-95'
               }`}
@@ -211,7 +211,7 @@ export default function Dice() {
           <button
             onClick={() => setPrediction('over')}
             disabled={isRolling}
-            className={`flex-1 py-2.5 rounded-xl font-black transition-all text-xs uppercase ${prediction === 'over'
+            className={`flex-1 py-2 rounded-lg font-black transition-all text-xs uppercase ${prediction === 'over'
               ? 'bg-white text-black shadow-lg scale-[1.02]'
               : 'text-white/40 active:scale-95'
               }`}
@@ -240,7 +240,7 @@ export default function Dice() {
         <button
           onClick={rollDice}
           disabled={isRolling || balance < betAmount}
-          className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-600 text-slate-900 font-display font-black text-lg uppercase tracking-widest shadow-[0_8px_16px_rgba(16,185,129,0.3)] disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] transition-all relative overflow-hidden"
+          className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-600 text-slate-900 font-display font-black text-base uppercase tracking-widest shadow-[0_8px_16px_rgba(16,185,129,0.3)] disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] transition-all relative overflow-hidden"
         >
           {isRolling ? 'ROLLING...' : 'ROLL DICE'}
           <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-20deg] animate-[shine_2s_infinite]" />

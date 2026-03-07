@@ -1,6 +1,6 @@
 import { useAppStore } from "@/lib/store";
 import { format } from "date-fns";
-import { ArrowDownToLine, ArrowUpFromLine, Coins, Plus, History } from "lucide-react";
+import { ArrowDownToLine, ArrowUpFromLine, Coins, Plus, History, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function Wallet() {
@@ -13,6 +13,10 @@ export default function Wallet() {
 
   return (
     <div className="space-y-6 px-4 pt-4 pb-8">
+      <button onClick={() => window.history.back()} className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors mb-2">
+        <ArrowLeft className="w-4 h-4" />
+        <span className="font-medium">Back to Earn</span>
+      </button>
       <h2 className="text-2xl font-display font-bold">Wallet</h2>
 
       <div className="bg-gradient-to-br from-primary/90 to-primary rounded-3xl p-6 text-primary-foreground shadow-lg relative overflow-hidden">
