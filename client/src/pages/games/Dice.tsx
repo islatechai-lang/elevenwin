@@ -23,7 +23,12 @@ export default function Dice() {
   const diceControls = useAnimation();
 
   const betPresets = [10, 50, 100, 500];
-  const multiplier = 1.98;
+
+  // Dynamic math:
+  // Win chance is probability of landing in the chosen zone.
+  const winChance = prediction === 'over' ? 100 - targetNumber : targetNumber;
+  // House edge 1% -> 99 / winChance
+  const multiplier = Math.max(1.01, Number((99 / winChance).toFixed(2)));
 
   const rollDice = async () => {
     if (balance < betAmount || isRolling) return;
@@ -196,11 +201,47 @@ export default function Dice() {
         </AnimatePresence>
       </div>
 
-      {/* Target Controls Container */}
-      <div className="w-full max-w-md bg-card border-2 border-border/50 rounded-3xl p-3 material-shadow relative z-20">
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase">Target: <span className="text-foreground">{targetNumber}</span></span>
-          <span className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase">Spread: <span className="text-foreground">1-100</span></span>
+      {/* Slider Controls Container */}
+      <div className="w-full max-w-md bg-card border-2 border-border/50 rounded-3xl p-6 material-shadow relative z-20 space-y-6">
+        <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-[0.2em]">
+          <div className="flex flex-col gap-1">
+            <span className="text-muted-foreground">Multiplier</span>
+            <span className="text-xl text-emerald-400 font-display">{multiplier}x</span>
+          </div>
+          <div className="flex flex-col gap-1 text-right">
+            <span className="text-muted-foreground">Win Chance</span>
+            <span className="text-xl text-white font-display">{winChance}%</span>
+          </div>
+        </div>
+
+        {/* Custom Range Slider */}
+        <div className="relative h-14 bg-secondary/50 rounded-2xl p-1 flex items-center">
+          {/* Win/Loss Zone Highlighting */}
+          <div
+            className="absolute inset-y-1 left-1 right-1 rounded-xl overflow-hidden pointer-events-none"
+          >
+            <div
+              className={`absolute h-full transition-all duration-300 ${prediction === 'under' ? 'bg-emerald-500/20 left-0' : 'bg-emerald-500/20 right-0'}`}
+              style={{ width: `${prediction === 'under' ? targetNumber : 100 - targetNumber}%` }}
+            />
+          </div>
+
+          <input
+            type="range"
+            min="2"
+            max="98"
+            value={targetNumber}
+            onChange={(e) => setTargetNumber(parseInt(e.target.value))}
+            className="w-full h-2 bg-transparent appearance-none cursor-pointer z-10 accent-emerald-500"
+          />
+
+          {/* Target Handle Label (Floating) */}
+          <div
+            className="absolute -top-8 bg-emerald-500 text-slate-900 font-black px-2 py-1 rounded-lg text-[10px] transition-all pointer-events-none"
+            style={{ left: `calc(${targetNumber}% - 15px)` }}
+          >
+            {targetNumber}
+          </div>
         </div>
 
         <div className="flex gap-2 p-1 bg-secondary/80 rounded-2xl shadow-inner">
@@ -213,7 +254,6 @@ export default function Dice() {
               }`}
           >
             <span className="relative z-10 uppercase">UNDER {targetNumber}</span>
-            {prediction === 'under' && <div className="absolute inset-x-0 bottom-0 h-1 bg-emerald-500 rounded-full mx-6" />}
           </button>
           <button
             onClick={() => setPrediction('over')}
@@ -224,7 +264,6 @@ export default function Dice() {
               }`}
           >
             <span className="relative z-10 uppercase">OVER {targetNumber}</span>
-            {prediction === 'over' && <div className="absolute inset-x-0 bottom-0 h-1 bg-emerald-500 rounded-full mx-6" />}
           </button>
         </div>
       </div>
