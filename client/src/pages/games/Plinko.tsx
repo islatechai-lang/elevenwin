@@ -6,9 +6,9 @@ import { Link } from "wouter";
 import { useAudio } from "@/hooks/use-audio";
 import confetti from "canvas-confetti";
 
-const ROWS = 8;
-const MULTIPLIERS = [10, 3, 1.5, 0.5, 0.2, 0.5, 1.5, 3, 10];
-const PIN_GAP_X = 24; // approximation matching the gap-3 + pin size
+const ROWS = 6;
+const MULTIPLIERS = [4, 2, 1.2, 0.8, 1.2, 2, 4];
+const PIN_GAP_X = 28;
 
 
 export default function Plinko() {
@@ -74,8 +74,8 @@ export default function Plinko() {
     framesX.push(currentX);
     framesY.push("100%");
 
-    // With 9 multipliers, center is 0. Map range [-4, 4] to [0, 8]
-    const resultIndex = Math.max(0, Math.min(MULTIPLIERS.length - 1, Math.round(currentX + 4)));
+    // With 7 multipliers, center is 0. Map range [-3, 3] to [0, 6]
+    const resultIndex = Math.max(0, Math.min(MULTIPLIERS.length - 1, Math.round(currentX + 3)));
 
     const newBall = {
       id: Math.random().toString(36).substring(7),

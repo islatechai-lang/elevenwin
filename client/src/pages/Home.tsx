@@ -32,41 +32,23 @@ const GAMES = [
     badge: "Hot"
   },
   {
-    id: "quantum11",
-    name: "Quantum 11",
-    description: "High Voltage Hits",
-    image: "/images/quantum11-cover.png",
-    color: "from-blue-500/20 to-cyan-600/20",
-    path: "/games/quantum11",
-    players: "3.4k",
-    badge: "New"
-  },
-  {
-    id: "celestial",
-    name: "Celestial Path",
-    description: "Space Stakes Climb",
-    image: "/images/celestial-cover.png",
-    color: "from-indigo-500/20 to-purple-600/20",
-    path: "/games/celestial-path",
-    players: "1.8k"
+    id: "plinko",
+    name: "Plinko Drop",
+    description: "Watch the ball fall",
+    image: "/images/plinko-cover.png",
+    color: "from-rose-500/20 to-pink-600/20",
+    path: "/games/plinko",
+    players: "2.1k",
+    badge: "Hot"
   },
   {
     id: "harmonic",
-    name: "Harmonic Wheel",
+    name: "Imperial Wheel",
     description: "Imperial Multipliers",
     image: "/images/harmonic-cover.png",
     color: "from-amber-500/20 to-orange-600/20",
     path: "/games/harmonic-wheel",
     players: "1.2k"
-  },
-  {
-    id: "matrix",
-    name: "Jackpot Matrix",
-    description: "Jackpot Grid",
-    image: "/images/matrix-cover.png",
-    color: "from-slate-500/20 to-zinc-600/20",
-    path: "/games/matrix",
-    players: "2.5k"
   }
 ];
 
