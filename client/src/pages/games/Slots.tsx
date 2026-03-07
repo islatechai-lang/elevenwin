@@ -201,7 +201,7 @@ export default function Slots() {
             </div>
 
             {/* Lever assembly - top-0 = always aligned to reels top */}
-            <div className="absolute -right-4 top-0 z-20 w-[20px] h-8 flex flex-col items-center justify-center perspective-[800px]">
+            <div className="absolute -right-2 top-0 z-20 w-[20px] h-8 flex flex-col items-center justify-center perspective-[800px]">
               {/* Base oval */}
               <div className="absolute inset-x-0 inset-y-0 bg-gradient-to-r from-gray-800 to-black rounded-full border-r border-y border-gray-600 shadow-[-5px_0_10px_rgba(0,0,0,0.8),10px_0_20px_rgba(0,0,0,0.6)] z-10" />
 
