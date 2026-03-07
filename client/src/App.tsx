@@ -17,6 +17,8 @@ import LifePathMatrix from "@/pages/games/LifePathMatrix";
 import Wallet from "@/pages/Wallet";
 import Profile from "@/pages/Profile";
 
+import { useAppStore } from "@/lib/store";
+import AuthPage from "@/pages/AuthPage";
 import { useAuth } from "@/hooks/use-auth";
 
 function Router() {
@@ -24,7 +26,7 @@ function Router() {
     <MobileLayout>
       <Switch>
         <Route path="/" component={Home} />
-        <Route path="/games" component={Home} /> {/* List of games is on home */}
+        <Route path="/games" component={Home} />
         <Route path="/games/slots" component={Slots} />
         <Route path="/games/dice" component={Dice} />
         <Route path="/games/plinko" component={Plinko} />
@@ -42,11 +44,13 @@ function Router() {
 
 function App() {
   useAuth();
+  const { user } = useAppStore();
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        <Router />
+        {!user ? <AuthPage /> : <Router />}
       </TooltipProvider>
     </QueryClientProvider>
   );
