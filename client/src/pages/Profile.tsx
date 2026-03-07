@@ -11,7 +11,7 @@ export default function Profile() {
   if (!user) {
     return (
       <div className="flex flex-col items-center justify-center h-full space-y-6 pt-10 px-6">
-        <div className="self-start flex items-center gap-3">
+        <div className="self-start w-full flex items-center justify-between">
           <Link href="/">
             <button className="flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors">
               <ArrowLeft className="w-4 h-4" />
@@ -47,7 +47,7 @@ export default function Profile() {
 
   return (
     <div className="space-y-6 pb-12 px-4 pt-4">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between">
         <Link href="/">
           <button className="flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors">
             <ArrowLeft className="w-4 h-4" />

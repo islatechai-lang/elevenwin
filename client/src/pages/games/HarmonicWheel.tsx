@@ -80,16 +80,18 @@ export default function HarmonicWheel() {
                 <button onClick={() => window.history.back()} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
                     <ArrowLeft className="w-5 h-5 text-indigo-400" />
                 </button>
-                <div className="text-center">
-                    <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-500/50">ElevenWin</h1>
-                    <div className="text-sm font-bold italic tracking-tighter uppercase">GOLDEN WHEEL</div>
+                <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-1.5 bg-white/5 rounded-full px-3 py-1.5 border border-white/10">
+                        <Coins className="w-3.5 h-3.5 text-primary" />
+                        <span className="font-bold text-xs text-white">₱{balance.toLocaleString()}</span>
+                    </div>
+                    <button
+                        onClick={() => setShowInfo(!showInfo)}
+                        className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-indigo-400 font-bold"
+                    >
+                        ?
+                    </button>
                 </div>
-                <button
-                    onClick={() => setShowInfo(!showInfo)}
-                    className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-indigo-400 font-bold"
-                >
-                    ?
-                </button>
             </div>
 
             {/* Visualizer Area */}

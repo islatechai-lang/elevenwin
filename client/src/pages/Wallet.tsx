@@ -14,7 +14,7 @@ export default function Wallet() {
 
   return (
     <div className="space-y-6 px-4 pt-4 pb-8">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between">
         <Link href="/">
           <button className="flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors">
             <ArrowLeft className="w-4 h-4" />
