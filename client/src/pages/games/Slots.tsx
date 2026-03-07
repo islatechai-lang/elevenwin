@@ -97,7 +97,7 @@ export default function Slots() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-64px)] items-center bg-[#0a0a0f] text-white overflow-hidden safe-area-inset-top">
+    <div className="flex flex-col min-h-[calc(100vh-64px)] items-center bg-[#0a0a0f] text-white safe-area-inset-top">
       {/* Header */}
       <div className="w-full flex justify-between items-center p-4 z-50">
         <button onClick={() => window.history.back()} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">

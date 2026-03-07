@@ -93,7 +93,7 @@ export default function Dice() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-64px)] items-center bg-[#0a0a0f] text-white overflow-hidden safe-area-inset-top">
+    <div className="flex flex-col min-h-[calc(100vh-64px)] items-center bg-[#0a0a0f] text-white safe-area-inset-top">
       {/* Header */}
       <div className="w-full flex justify-between items-center p-4 z-50">
         <button onClick={() => window.history.back()} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
@@ -214,14 +214,13 @@ export default function Dice() {
           </div>
         </div>
 
-        {/* Custom Range Slider */}
-        <div className="relative h-14 bg-secondary/50 rounded-2xl p-1 flex items-center">
-          {/* Win/Loss Zone Highlighting */}
-          <div
-            className="absolute inset-y-1 left-1 right-1 rounded-xl overflow-hidden pointer-events-none"
-          >
+        {/* Custom High-Performance Line Slider */}
+        <div className="relative h-12 flex items-center select-none touch-none group">
+          {/* Main Track Line */}
+          <div className="absolute inset-x-0 h-[2px] bg-white/10 rounded-full overflow-hidden">
+            {/* Colored Win/Loss Zones */}
             <div
-              className={`absolute h-full transition-all duration-300 ${prediction === 'under' ? 'bg-emerald-500/20 left-0' : 'bg-emerald-500/20 right-0'}`}
+              className={`absolute h-full transition-all duration-300 ${prediction === 'under' ? 'bg-emerald-500/40 left-0' : 'bg-emerald-500/40 right-0'}`}
               style={{ width: `${prediction === 'under' ? targetNumber : 100 - targetNumber}%` }}
             />
           </div>
@@ -230,18 +229,26 @@ export default function Dice() {
             type="range"
             min="2"
             max="98"
+            step="1"
             value={targetNumber}
             onChange={(e) => setTargetNumber(parseInt(e.target.value))}
-            className="w-full h-2 bg-transparent appearance-none cursor-pointer z-10 accent-emerald-500"
+            className="absolute inset-x-0 w-full h-full opacity-0 cursor-pointer z-20"
           />
 
-          {/* Target Handle Label (Floating) */}
-          <div
-            className="absolute -top-8 bg-emerald-500 text-slate-900 font-black px-2 py-1 rounded-lg text-[10px] transition-all pointer-events-none"
-            style={{ left: `calc(${targetNumber}% - 15px)` }}
+          {/* Visual Handle (The Indicator) */}
+          <motion.div
+            className="absolute w-6 h-6 pointer-events-none z-10 flex items-center justify-center"
+            animate={{ left: `calc(${targetNumber}% - 12px)` }}
+            transition={{ type: "spring", stiffness: 600, damping: 40 }}
           >
-            {targetNumber}
-          </div>
+            {/* The "Line" or Pulse Indicator */}
+            <div className="w-1 h-8 bg-emerald-500 rounded-full shadow-[0_0_20px_rgba(16,185,129,1)]" />
+
+            {/* Value Bubble */}
+            <div className="absolute -top-10 bg-emerald-500 text-black font-black px-2 py-0.5 rounded text-[10px] shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+              {targetNumber}
+            </div>
+          </motion.div>
         </div>
 
         <div className="flex gap-2 p-1 bg-secondary/80 rounded-2xl shadow-inner">
