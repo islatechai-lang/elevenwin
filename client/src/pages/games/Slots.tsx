@@ -160,9 +160,9 @@ export default function Slots() {
           </div>
 
           {/* Reels + Lever wrapper (relative so lever aligns to reels top) */}
-          <div className="relative mr-1">
+          <div className="relative">
             {/* Reels Area */}
-            <div className="bg-gradient-to-b from-[#111] via-[#222] to-[#111] rounded-2xl p-3 shadow-[inset_0_15px_30px_rgba(0,0,0,0.9)] border-4 border-gray-900 border-b-gray-700 ml-1 mr-6">
+            <div className="bg-gradient-to-b from-[#111] via-[#222] to-[#111] rounded-2xl p-3 shadow-[inset_0_15px_30px_rgba(0,0,0,0.9)] border-4 border-gray-900 border-b-gray-700 mx-4">
               <div className="flex justify-between gap-2 relative">
                 {/* Center Win Line Laser */}
                 <div className="absolute top-1/2 -translate-y-1/2 -left-2 -right-2 h-1 bg-red-500/80 shadow-[0_0_20px_rgba(239,68,68,1)] z-20 mix-blend-screen pointer-events-none" />
