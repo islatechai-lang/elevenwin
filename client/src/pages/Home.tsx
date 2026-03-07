@@ -88,7 +88,7 @@ export default function Home() {
       {/* Game Selection */}
       <div className="space-y-6">
         <div className="flex items-center justify-between px-1">
-          <h3 className="font-bold text-xl font-display tracking-tight uppercase italic">Featured Games</h3>
+          <h3 className="font-bold text-xl font-display tracking-tight uppercase italic text-primary">Earn Your Chips</h3>
           <Link href="/">
             <span className="text-xs font-bold text-primary flex items-center cursor-pointer uppercase tracking-widest hover:underline decoration-2 underline-offset-4 transition-all">
               See All <ChevronRight className="w-4 h-4 ml-0.5" />

@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { motion } from "framer-motion";
 
 const navItems = [
-  { path: "/", icon: Home, label: "Home" },
+  { path: "/", icon: Home, label: "Earn" },
   { path: "/wallet", icon: Wallet, label: "Wallet" },
   { path: "/profile", icon: User, label: "Profile" },
 ];

@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { useAppStore } from "@/lib/store";
-import { Coins, AlertCircle, Music, Activity, Zap } from "lucide-react";
+import { Coins, AlertCircle, ArrowLeft, Activity, Zap } from "lucide-react";
 import { useAudio } from "@/hooks/use-audio";
 import confetti from "canvas-confetti";
 
@@ -78,7 +78,7 @@ export default function HarmonicWheel() {
             {/* Header */}
             <div className="w-full flex justify-between items-center p-4 z-50">
                 <button onClick={() => window.history.back()} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
-                    <Music className="w-5 h-5 text-indigo-400" />
+                    <ArrowLeft className="w-5 h-5 text-indigo-400" />
                 </button>
                 <div className="text-center">
                     <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-500/50">Imperial</h1>
@@ -185,14 +185,14 @@ export default function HarmonicWheel() {
                             <span className="text-lg font-black tracking-tighter">₱{betAmount}</span>
                         </div>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="grid grid-cols-4 gap-2">
                         {betPresets.map((amt) => (
                             <button
                                 key={amt}
                                 onClick={() => setBetAmount(amt)}
                                 disabled={isSpinning}
-                                className={`w-12 h-12 rounded-2xl font-black text-[10px] transition-all flex items-center justify-center uppercase ${betAmount === amt
-                                    ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/40 scale-105'
+                                className={`py-2 rounded-xl font-bold text-xs transition-all active:scale-95 ${betAmount === amt
+                                    ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/40'
                                     : 'bg-white/5 text-white/40 hover:bg-white/10 border border-white/5'
                                     }`}
                             >
