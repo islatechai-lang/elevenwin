@@ -125,7 +125,7 @@ export default function Plinko() {
           <ArrowLeft className="w-5 h-5 text-rose-400" />
         </button>
         <div className="text-center">
-          <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-rose-400/50">Arcade</h1>
+          <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-rose-400/50">ElevenWin</h1>
           <div className="text-sm font-bold italic tracking-tighter uppercase">PLINKO DROP</div>
         </div>
         <button

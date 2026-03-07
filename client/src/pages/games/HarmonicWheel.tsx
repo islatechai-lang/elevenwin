@@ -81,7 +81,7 @@ export default function HarmonicWheel() {
                     <ArrowLeft className="w-5 h-5 text-indigo-400" />
                 </button>
                 <div className="text-center">
-                    <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-500/50">Imperial</h1>
+                    <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-500/50">ElevenWin</h1>
                     <div className="text-sm font-bold italic tracking-tighter uppercase">GOLDEN WHEEL</div>
                 </div>
                 <button
@@ -176,30 +176,29 @@ export default function HarmonicWheel() {
             </div>
 
             {/* Controls Container */}
-            <div className="w-full max-w-md bg-white/[0.03] backdrop-blur-3xl rounded-t-[3rem] p-8 pb-12 border-t border-white/10 space-y-6 z-40">
-                <div className="flex justify-between items-center px-2">
-                    <div className="flex flex-col">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Game Stake</span>
-                        <div className="flex items-center gap-1.5 text-yellow-400 mt-1">
-                            <Coins className="w-4 h-4" />
-                            <span className="text-lg font-black tracking-tighter">₱{betAmount}</span>
-                        </div>
+            <div className="w-full max-w-md bg-card rounded-t-3xl p-4 border border-border/50 material-shadow space-y-4 relative z-20">
+                <div className="flex justify-between items-center text-xs font-medium">
+                    <span className="text-muted-foreground">Bet Amount</span>
+                    <div className="flex items-center gap-1 text-primary">
+                        <Coins className="w-4 h-4 text-indigo-400" />
+                        <span className="font-bold text-lg">₱{betAmount.toLocaleString()}</span>
                     </div>
-                    <div className="grid grid-cols-4 gap-2">
-                        {betPresets.map((amt) => (
-                            <button
-                                key={amt}
-                                onClick={() => setBetAmount(amt)}
-                                disabled={isSpinning}
-                                className={`py-2 rounded-xl font-bold text-xs transition-all active:scale-95 ${betAmount === amt
-                                    ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/40'
-                                    : 'bg-white/5 text-white/40 hover:bg-white/10 border border-white/5'
-                                    }`}
-                            >
-                                ₱{amt}
-                            </button>
-                        ))}
-                    </div>
+                </div>
+
+                <div className="grid grid-cols-4 gap-2">
+                    {betPresets.map((amt) => (
+                        <button
+                            key={amt}
+                            onClick={() => setBetAmount(amt)}
+                            disabled={isSpinning}
+                            className={`py-2 rounded-xl font-bold text-xs transition-all active:scale-95 ${betAmount === amt
+                                ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/40'
+                                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                                }`}
+                        >
+                            ₱{amt}
+                        </button>
+                    ))}
                 </div>
 
                 <button

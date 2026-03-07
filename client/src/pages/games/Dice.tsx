@@ -95,7 +95,7 @@ export default function Dice() {
           <ArrowLeft className="w-5 h-5 text-emerald-400" />
         </button>
         <div className="text-center">
-          <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-emerald-400/50">VIP</h1>
+          <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-emerald-400/50">ElevenWin</h1>
           <div className="text-sm font-bold italic tracking-tighter uppercase">OVER / UNDER DICE</div>
         </div>
         <button
