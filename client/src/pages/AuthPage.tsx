@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { LogIn, Coins, Trophy, Star, TrendingUp } from "lucide-react";
+import { Coins } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
 
 export default function AuthPage() {
@@ -58,25 +58,6 @@ export default function AuthPage() {
                     </div>
                 </motion.div>
 
-                {/* Casino Features */}
-                <div className="grid grid-cols-1 gap-3 w-full">
-                    <CasinoFeature
-                        icon={TrendingUp}
-                        title="High Stakes"
-                        desc="Join the elite players in the VIP matrix."
-                    />
-                    <CasinoFeature
-                        icon={Star}
-                        title="Luxury Games"
-                        desc="7 premium games with exclusive jackpots."
-                    />
-                    <CasinoFeature
-                        icon={Trophy}
-                        title="Instant Payouts"
-                        desc="Your winnings are secured and ready to roll."
-                    />
-                </div>
-
                 {/* login button centered and simple */}
                 <motion.div
                     initial={{ y: 20, opacity: 0 }}
@@ -111,28 +92,6 @@ export default function AuthPage() {
                         </span>
                     </button>
                 </motion.div>
-                <p className="mt-8 text-[11px] text-white/40 font-bold uppercase tracking-widest">
-                    Welcome to the inner circle
-                </p>
-            </div>
-
-            {/* Luxury Version tag */}
-            <div className="absolute bottom-8 text-[11px] font-bold text-yellow-500/20 uppercase tracking-[0.5em]">
-                VIP PROXY v1.11.0
-            </div>
-        </div>
-    );
-}
-
-function CasinoFeature({ icon: Icon, title, desc }: { icon: any; title: string; desc: string }) {
-    return (
-        <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md hover:bg-white/10 transition-colors">
-            <div className="w-12 h-12 rounded-xl bg-yellow-500/10 flex items-center justify-center border border-yellow-500/20">
-                <Icon className="w-6 h-6 text-yellow-500" />
-            </div>
-            <div className="text-left">
-                <h3 className="text-sm font-black uppercase tracking-wider text-yellow-500">{title}</h3>
-                <p className="text-[11px] text-white/60 font-medium leading-tight">{desc}</p>
             </div>
         </div>
     );
