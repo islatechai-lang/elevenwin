@@ -147,7 +147,7 @@ export default function Slots() {
       {/* 3D Slot Machine Container */}
       <div className="relative w-full max-w-2xl mx-auto flex-1 min-h-0 flex flex-col justify-center px-4">
 
-        <div className="bg-gradient-to-b from-gray-800 to-black rounded-t-[2.5rem] rounded-b-2xl p-4 shadow-[inset_0_4px_20px_rgba(255,255,255,0.1),_0_20px_50px_rgba(0,0,0,0.9)] border-t border-gray-600 relative z-10">
+        <div className="bg-gradient-to-b from-gray-800 to-black rounded-t-[2.5rem] rounded-b-2xl p-4 shadow-[inset_0_4px_20px_rgba(255,255,255,0.1),_0_20px_50px_rgba(0,0,0,0.9)] border-t border-gray-600 relative z-10 mr-8">
 
           {/* Machine Headboard (Marquee) */}
           <div className="mb-4 h-12 rounded-xl bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 p-[2px] shadow-[0_0_30px_rgba(234,179,8,0.2)]">
@@ -222,9 +222,9 @@ export default function Slots() {
 
         </div>
 
-        {/* Adjusted oval base: wider (w-8 -> w-[28px]), shorter (h-10), centered on reels */}
-        <div className="absolute right-1 top-[160px] -translate-y-1/2 z-20 w-[20px] h-8 flex flex-col items-center justify-center perspective-[800px]">
-          {/* Base box (Thin vertical oval directly on side casing) */}
+        {/* Lever assembly - aligned to top of the reels area */}
+        <div className="absolute right-2 top-[80px] z-20 w-[20px] h-8 flex flex-col items-center justify-center perspective-[800px]">
+          {/* Base oval (directly on side casing) */}
           <div className="absolute inset-x-0 inset-y-0 bg-gradient-to-r from-gray-800 to-black rounded-full border-r border-y border-gray-600 shadow-[-5px_0_10px_rgba(0,0,0,0.8),10px_0_20px_rgba(0,0,0,0.6)] z-10" />
 
           {/* The Pullable Lever (Front facing POV on side casing) */}
