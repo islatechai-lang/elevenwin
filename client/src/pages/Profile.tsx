@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useAuth } from "@/hooks/use-auth";
 
 export default function Profile() {
-  const { user } = useAppStore();
+  const { user, vipLevel } = useAppStore();
   const { login, logout } = useAuth();
 
   if (!user) {
@@ -57,7 +57,7 @@ export default function Profile() {
           <div className="flex-1 bg-secondary/30 rounded-2xl p-4 border border-border/50">
             <div className="text-[10px] uppercase font-black tracking-[0.2em] text-muted-foreground mb-1">VIP Level</div>
             <div className="font-bold text-primary flex items-center justify-center gap-1.5 italic">
-              <Trophy className="w-4 h-4" /> DIAMOND VIP
+              <Trophy className="w-4 h-4" /> {vipLevel || 'DIAMOND VIP'}
             </div>
           </div>
         </div>

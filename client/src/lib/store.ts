@@ -21,6 +21,7 @@ interface AppState {
   balance: number;
   isMuted: boolean;
   transactions: Transaction[];
+  vipLevel: string;
   setUser: (user: User | null) => void;
   setBalance: (balance: number) => void;
   updateBalance: (amount: number) => void;
@@ -35,6 +36,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   balance: 0,
   isMuted: false,
   transactions: [],
+  vipLevel: 'BRONZE',
   setUser: (user) => set({ user }),
   setBalance: (balance) => set({ balance }),
   updateBalance: async (amount) => {

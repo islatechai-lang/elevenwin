@@ -43,8 +43,11 @@ export function useAuth() {
                         uid: firebaseUser.uid,
                         displayName: firebaseUser.displayName,
                         email: firebaseUser.email,
+                        photoURL: firebaseUser.photoURL,
                         balance: 1000,
                         transactions: [],
+                        vipLevel: 'DIAMOND VIP',
+                        lastLogin: Timestamp.now(),
                         createdAt: Timestamp.now(),
                     });
                 }
@@ -55,6 +58,7 @@ export function useAuth() {
                         const data = doc.data();
                         setBalance(data.balance || 0);
                         setTransactions(data.transactions || []);
+                        useAppStore.setState({ vipLevel: data.vipLevel || 'BRONZE' });
                     }
                 });
 
