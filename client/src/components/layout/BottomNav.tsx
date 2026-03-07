@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 const navItems = [
   { path: "/", icon: Home, label: "Home" },
-  { path: "/games", icon: Gamepad2, label: "Games" },
   { path: "/wallet", icon: Wallet, label: "Wallet" },
   { path: "/profile", icon: User, label: "Profile" },
 ];
@@ -23,20 +22,18 @@ export function BottomNav() {
             <Link key={item.path} href={item.path}>
               <div className="relative flex flex-col items-center justify-center w-full h-full cursor-pointer">
                 <div className="relative z-10 flex flex-col items-center gap-1">
-                  <Icon 
-                    className={`w-6 h-6 transition-colors duration-200 ${
-                      isActive ? "text-primary" : "text-muted-foreground"
-                    }`} 
+                  <Icon
+                    className={`w-6 h-6 transition-colors duration-200 ${isActive ? "text-primary" : "text-muted-foreground"
+                      }`}
                   />
-                  <span 
-                    className={`text-[10px] font-medium transition-colors duration-200 ${
-                      isActive ? "text-primary" : "text-muted-foreground"
-                    }`}
+                  <span
+                    className={`text-[10px] font-medium transition-colors duration-200 ${isActive ? "text-primary" : "text-muted-foreground"
+                      }`}
                   >
                     {item.label}
                   </span>
                 </div>
-                
+
                 {isActive && (
                   <motion.div
                     layoutId="bottom-nav-indicator"
