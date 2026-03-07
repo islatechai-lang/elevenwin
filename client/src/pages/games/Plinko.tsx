@@ -162,7 +162,7 @@ export default function Plinko() {
       </AnimatePresence>
 
       {/* Main 3D Game Area */}
-      <div className="bg-gradient-to-b from-slate-900 to-black border-2 border-slate-800 rounded-3xl mx-4 p-4 shadow-[inset_0_10px_20px_rgba(0,0,0,0.8)] relative overflow-hidden flex flex-col items-center flex-1 min-h-0">
+      <div className="bg-gradient-to-b from-slate-900 to-black border-2 border-slate-800 rounded-3xl mx-4 mb-4 p-4 shadow-[inset_0_10px_20px_rgba(0,0,0,0.8)] relative overflow-hidden flex flex-col items-center flex-1 min-h-0">
 
         {/* Glass Reflection */}
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
