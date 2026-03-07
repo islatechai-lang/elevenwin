@@ -38,13 +38,21 @@ function Router() {
 
 function App() {
   useAuth();
-  const { user } = useAppStore();
+  const { user, isAuthLoading } = useAppStore();
 
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
-        {!user ? <AuthPage /> : <Router />}
+        {isAuthLoading ? (
+          <div className="min-h-screen bg-[#0a0a0f] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+          </div>
+        ) : !user ? (
+          <AuthPage />
+        ) : (
+          <Router />
+        )}
       </TooltipProvider>
     </QueryClientProvider>
   );

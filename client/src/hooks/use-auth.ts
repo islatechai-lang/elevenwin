@@ -20,6 +20,7 @@ export function useAuth() {
     const setBalance = useAppStore((state) => state.setBalance);
     const setTransactions = useAppStore((state) => state.setTransactions);
     const clearStore = useAppStore((state) => state.clearStore);
+    const setAuthLoading = useAppStore((state) => state.setAuthLoading);
 
     useEffect(() => {
         const unsubscribeAuth = onAuthStateChanged(auth, async (firebaseUser) => {
@@ -62,10 +63,13 @@ export function useAuth() {
                     }
                 });
 
+                setAuthLoading(false);
+
                 return () => unsubscribeFirestore();
             } else {
                 // User is signed out
                 clearStore();
+                setAuthLoading(false);
             }
         });
 

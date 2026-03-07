@@ -18,6 +18,7 @@ interface Transaction {
 
 interface AppState {
   user: User | null;
+  isAuthLoading: boolean;
   balance: number;
   isMuted: boolean;
   transactions: Transaction[];
@@ -29,14 +30,17 @@ interface AppState {
   setTransactions: (transactions: Transaction[]) => void;
   addTransaction: (amount: number, type: 'win' | 'loss' | 'deposit') => void;
   clearStore: () => void;
+  setAuthLoading: (isLoading: boolean) => void;
 }
 
 export const useAppStore = create<AppState>((set, get) => ({
   user: null,
+  isAuthLoading: true,
   balance: 0,
   isMuted: false,
   transactions: [],
   vipLevel: 'BRONZE',
+  setAuthLoading: (isAuthLoading) => set({ isAuthLoading }),
   setUser: (user) => set({ user }),
   setBalance: (balance) => set({ balance }),
   updateBalance: async (amount) => {
