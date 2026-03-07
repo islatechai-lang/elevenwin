@@ -127,7 +127,7 @@ export default function Plinko() {
 
 
         {/* 3D Plinko Board */}
-        <div className="relative w-full max-w-[300px] aspect-[4/5] sm:aspect-[3/4] my-2 perspective-[1000px] flex-grow flex flex-col items-center">
+        <div className="relative w-full max-w-[280px] aspect-square my-2 perspective-[1000px] flex-grow flex flex-col items-center">
 
           <div className="absolute inset-0 bg-gradient-to-b from-indigo-900/10 to-transparent rounded-3xl" />
 

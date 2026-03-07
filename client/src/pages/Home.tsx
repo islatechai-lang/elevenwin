@@ -32,16 +32,6 @@ const GAMES = [
     badge: "Hot"
   },
   {
-    id: "plinko",
-    name: "Plinko Drop",
-    description: "Watch the ball fall",
-    image: "/images/plinko-cover.png",
-    color: "from-rose-500/20 to-pink-600/20",
-    path: "/games/plinko",
-    players: "2.1k",
-    badge: "Hot"
-  },
-  {
     id: "harmonic",
     name: "Imperial Wheel",
     description: "Imperial Multipliers",
