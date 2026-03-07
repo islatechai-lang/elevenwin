@@ -2,6 +2,7 @@ import { useAppStore } from "@/lib/store";
 import { LogOut, Settings, Shield, HelpCircle, Trophy, LogIn, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/hooks/use-auth";
+import { Link } from "wouter";
 
 export default function Profile() {
   const { user, vipLevel } = useAppStore();
@@ -9,11 +10,16 @@ export default function Profile() {
 
   if (!user) {
     return (
-      <div className="flex flex-col items-center justify-center h-full space-y-6 pt-20 px-6">
-        <button onClick={() => window.history.back()} className="self-start flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors mb-2">
-          <ArrowLeft className="w-4 h-4" />
-          <span className="font-medium">Back to Earn</span>
-        </button>
+      <div className="flex flex-col items-center justify-center h-full space-y-6 pt-10 px-6">
+        <div className="self-start flex items-center gap-3">
+          <Link href="/">
+            <button className="flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors">
+              <ArrowLeft className="w-4 h-4" />
+              <span className="font-medium">Back</span>
+            </button>
+          </Link>
+          <h2 className="text-2xl font-display font-bold">VIP Lounge</h2>
+        </div>
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -41,11 +47,15 @@ export default function Profile() {
 
   return (
     <div className="space-y-6 pb-12 px-4 pt-4">
-      <button onClick={() => window.history.back()} className="flex items-center gap-2 text-sm text-white/50 hover:text-white transition-colors mb-2">
-        <ArrowLeft className="w-4 h-4" />
-        <span className="font-medium">Back to Earn</span>
-      </button>
-      <h2 className="text-2xl font-display font-bold">VIP Lounge</h2>
+      <div className="flex items-center gap-3">
+        <Link href="/">
+          <button className="flex items-center gap-1.5 text-sm text-white/50 hover:text-white transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            <span className="font-medium">Back</span>
+          </button>
+        </Link>
+        <h2 className="text-2xl font-display font-bold">VIP Lounge</h2>
+      </div>
 
       <div className="bg-card rounded-[2.5rem] p-8 border border-border/50 shadow-xl flex flex-col items-center text-center space-y-4">
         <div className="relative">
