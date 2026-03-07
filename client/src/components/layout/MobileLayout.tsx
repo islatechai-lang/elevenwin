@@ -7,7 +7,7 @@ interface MobileLayoutProps {
 
 export function MobileLayout({ children }: MobileLayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen bg-background relative overflow-hidden">
+    <div className="flex flex-col min-h-screen bg-[#0a0a0f] relative overflow-hidden">
       <Header />
       <main className="flex-1 overflow-y-auto pb-20 hide-scrollbar">
         {children}
