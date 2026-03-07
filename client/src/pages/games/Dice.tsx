@@ -168,7 +168,7 @@ export default function Dice() {
       </div>
 
       {/* Bottom Controls - fixed to bottom, compact */}
-      <div className="shrink-0 px-4 pb-3 space-y-2">
+      <div className="shrink-0 px-4 pb-8 space-y-2">
         {/* Slider */}
         <div className="relative h-8 flex items-center select-none touch-none">
           <div className="absolute inset-x-0 h-[3px] bg-white/10 rounded-full overflow-hidden">

@@ -178,7 +178,7 @@ export default function HarmonicWheel() {
             </div>
 
             {/* Controls Container */}
-            <div className="w-full shrink-0 px-4 pb-3 space-y-2">
+            <div className="w-full shrink-0 px-4 pb-8 space-y-2">
                 <div className="flex justify-between items-center text-xs font-medium">
                     <span className="text-muted-foreground">Bet Amount</span>
                     <div className="flex items-center gap-1 text-primary">
