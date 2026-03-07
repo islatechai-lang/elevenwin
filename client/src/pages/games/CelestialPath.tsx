@@ -120,24 +120,24 @@ export default function CelestialPath() {
                                     y: 0
                                 }}
                                 className={`relative w-full p-4 rounded-[1.5rem] border transition-all duration-500 ${isCurrent
-                                        ? 'bg-indigo-600/30 border-indigo-400 shadow-[0_0_40px_rgba(99,102,241,0.4)]'
-                                        : isPassed
-                                            ? 'bg-emerald-500/5 border-emerald-500/20'
-                                            : 'bg-white/[0.03] border-white/10'
+                                    ? 'bg-indigo-600/30 border-indigo-400 shadow-[0_0_40px_rgba(99,102,241,0.4)]'
+                                    : isPassed
+                                        ? 'bg-emerald-500/5 border-emerald-500/20'
+                                        : 'bg-white/[0.03] border-white/10'
                                     }`}
                             >
                                 <div className="flex justify-between items-center">
                                     <div className="flex items-center gap-3">
                                         <div className={`w-10 h-10 rounded-full flex items-center justify-center ${isCurrent ? 'bg-indigo-400 text-white shadow-[0_0_15px_rgba(129,140,248,0.5)]' : 'bg-white/5 text-white/20'
                                             }`}>
-                                            <Stars className="w-5 h-5" />
+                                            <Trophy className="w-5 h-5" />
                                         </div>
                                         <div className="flex flex-col">
                                             <span className={`text-[8px] font-black uppercase tracking-widest ${isCurrent ? 'text-indigo-300' : 'text-white/20'}`}>
-                                                Stellar Level
+                                                VIP Level
                                             </span>
                                             <span className={`text-sm font-bold ${isCurrent ? 'text-white' : 'text-white/30'}`}>
-                                                Gate {level.id}
+                                                Floor {level.id}
                                             </span>
                                         </div>
                                     </div>
@@ -163,13 +163,13 @@ export default function CelestialPath() {
                             className="absolute inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-xl p-8"
                         >
                             <div className="text-center space-y-6">
-                                <div className="text-5xl font-black text-rose-500 uppercase italic tracking-tighter leading-none">COLLAPSED<br />STARS</div>
-                                <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] max-w-[180px] mx-auto">You ventured too far into the void.</p>
+                                <div className="text-5xl font-black text-rose-500 uppercase italic tracking-tighter leading-none">BANKRUPT<br />BUSTED</div>
+                                <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] max-w-[180px] mx-auto">The house always wins in the end.</p>
                                 <button
                                     onClick={resetGame}
                                     className="w-full px-8 py-4 bg-white text-black font-black rounded-2xl uppercase tracking-[0.2em] text-[10px] shadow-2xl active:scale-95 transition-transform"
                                 >
-                                    Return to Orbit
+                                    Try Again
                                 </button>
                             </div>
                         </motion.div>
@@ -183,13 +183,13 @@ export default function CelestialPath() {
                             className="absolute inset-0 z-50 flex items-center justify-center p-6 bg-black/40 backdrop-blur-sm"
                         >
                             <div className="bg-[#0a0a1f] border border-indigo-500/30 p-8 rounded-[2rem] space-y-4 max-w-xs text-left">
-                                <h2 className="text-xl font-black text-indigo-400 uppercase italic">Ascension Guide</h2>
+                                <h2 className="text-xl font-black text-indigo-400 uppercase italic">VIP Climb Guide</h2>
                                 <p className="text-[10px] uppercase font-bold text-white/50 leading-loose">
-                                    Ascend through the 6 Gates of the celestial path. Each gate increases your multiplier but higher gates carry greater risk of "Void Collapse".
+                                    Climb through the 6 Floors of the VIP tower. Each floor increases your payout but higher floors carry greater risk of "Bankrupt".
                                 </p>
                                 <div className="space-y-2">
                                     <div className="p-3 bg-white/5 rounded-xl border border-white/10 flex justify-between items-center">
-                                        <span className="text-[9px] font-bold uppercase text-white/40">Final Multiplier</span>
+                                        <span className="text-[9px] font-bold uppercase text-white/40">Jackpot Multiplier</span>
                                         <span className="text-lg font-black italic">11x</span>
                                     </div>
                                 </div>
@@ -205,7 +205,7 @@ export default function CelestialPath() {
                 {!isPlaying ? (
                     <>
                         <div className="flex justify-between items-center px-1">
-                            <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Mission Stake</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Game Stake</span>
                             <div className="flex items-center gap-1 text-yellow-400">
                                 <Coins className="w-4 h-4" />
                                 <span className="font-bold">₱{betAmount}</span>
@@ -228,7 +228,7 @@ export default function CelestialPath() {
                             disabled={balance < betAmount}
                             className="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-display font-black text-lg uppercase tracking-widest shadow-xl active:scale-95 transition-all disabled:opacity-50"
                         >
-                            Start Ascension
+                            Start the Climb
                         </button>
                     </>
                 ) : (
@@ -245,7 +245,7 @@ export default function CelestialPath() {
                             disabled={isGameOver}
                             className="flex-1 py-4 rounded-xl bg-indigo-600 text-white font-display font-black text-xs uppercase tracking-widest shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2"
                         >
-                            Ascend <ArrowUpCircle className="w-4 h-4" />
+                            Climb Up <ArrowUpCircle className="w-4 h-4" />
                         </button>
                     </div>
                 )}

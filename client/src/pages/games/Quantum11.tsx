@@ -9,28 +9,28 @@ export default function Quantum11() {
     const { balance, updateBalance, addTransaction } = useAppStore();
     const { playSound } = useAudio();
     const [betAmount, setBetAmount] = useState(50);
-    const [isResonating, setIsResonating] = useState(false);
-    const [resonanceValue, setResonanceValue] = useState<number | null>(null);
+    const [isPulsing, setIsPulsing] = useState(false);
+    const [pulseValue, setPulseValue] = useState<number | null>(null);
     const [isMasterWin, setIsMasterWin] = useState(false);
     const [showInfo, setShowInfo] = useState(false);
 
     const betPresets = [10, 50, 100, 500];
     const MASTER_NUMBERS = [11, 22, 33];
 
-    const startResonance = () => {
-        if (balance < betAmount || isResonating) return;
+    const startPulse = () => {
+        if (balance < betAmount || isPulsing) return;
 
         updateBalance(-betAmount);
-        setIsResonating(true);
-        setResonanceValue(null);
+        setIsPulsing(true);
+        setPulseValue(null);
         setIsMasterWin(false);
         playSound('drop'); // Initial pulse sound
 
         // Visual build-up duration
         setTimeout(() => {
             const result = Math.floor(Math.random() * 33) + 1;
-            setResonanceValue(result);
-            setIsResonating(false);
+            setPulseValue(result);
+            setIsPulsing(false);
 
             const isMaster = MASTER_NUMBERS.includes(result);
             setIsMasterWin(isMaster);
@@ -94,9 +94,9 @@ export default function Quantum11() {
                             exit={{ opacity: 0, scale: 0.9 }}
                             className="z-50 bg-slate-900/90 backdrop-blur-xl p-8 rounded-[2rem] border border-cyan-500/30 max-w-[85%] text-left space-y-4"
                         >
-                            <h2 className="text-xl font-black text-cyan-400 uppercase italic">How to Play</h2>
+                            <h2 className="text-xl font-black text-cyan-400 uppercase italic">How to Win</h2>
                             <p className="text-xs leading-relaxed text-white/70 font-medium">
-                                Resonate with the Quantum Field to find Master Frequencies.
+                                Hit the Quantum Field to trigger High Voltage Jackpots.
                             </p>
                             <ul className="space-y-2 text-[10px] font-bold uppercase tracking-wider">
                                 <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-yellow-400" /> Master Numbers (11, 22, 33) = <span className="text-yellow-400">11x Multiplier</span></li>
@@ -107,12 +107,12 @@ export default function Quantum11() {
                                 onClick={() => setShowInfo(false)}
                                 className="w-full py-3 bg-cyan-500 text-white rounded-xl font-black uppercase tracking-widest text-[10px]"
                             >
-                                Got it
+                                Let's Roll
                             </button>
                         </motion.div>
-                    ) : isResonating ? (
+                    ) : isPulsing ? (
                         <motion.div
-                            key="resonating"
+                            key="pulsing"
                             initial={{ scale: 0.8, opacity: 0 }}
                             animate={{
                                 scale: [1, 1.3, 1],
@@ -135,7 +135,7 @@ export default function Quantum11() {
                                 <Zap className="w-12 h-12 text-cyan-300 animate-pulse" />
                             </div>
                         </motion.div>
-                    ) : resonanceValue ? (
+                    ) : pulseValue ? (
                         <motion.div
                             key="result"
                             initial={{ scale: 0.5, opacity: 0, y: 20 }}
@@ -143,7 +143,7 @@ export default function Quantum11() {
                             className="text-center"
                         >
                             <div className={`text-9xl font-black font-display mb-2 drop-shadow-[0_0_30px_rgba(34,211,238,0.4)] ${isMasterWin ? 'text-yellow-400' : 'text-cyan-400'}`}>
-                                {resonanceValue}
+                                {pulseValue}
                             </div>
                             <motion.div
                                 initial={{ opacity: 0 }}
@@ -151,7 +151,7 @@ export default function Quantum11() {
                                 transition={{ delay: 0.3 }}
                                 className="text-xs tracking-[0.3em] uppercase font-black text-white/50"
                             >
-                                {isMasterWin ? "Divine Alignment" : "Locked Frequency"}
+                                {isMasterWin ? "JACKPOT ALIGNMENT" : "STAKE LOCKED"}
                             </motion.div>
                         </motion.div>
                     ) : (
@@ -167,7 +167,7 @@ export default function Quantum11() {
                                     <Zap className="w-10 h-10 text-cyan-500/40" />
                                 </div>
                             </div>
-                            <p className="mt-8 text-[10px] text-cyan-500/40 uppercase font-black tracking-[0.4em]">Awaiting Pulse</p>
+                            <p className="mt-8 text-[10px] text-cyan-500/40 uppercase font-black tracking-[0.4em]">Ready to Win</p>
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -191,7 +191,7 @@ export default function Quantum11() {
                         <button
                             key={amt}
                             onClick={() => setBetAmount(amt)}
-                            disabled={isResonating}
+                            disabled={isPulsing}
                             className={`py-3 rounded-2xl font-bold text-xs transition-all ${betAmount === amt
                                 ? "bg-cyan-500 text-white shadow-[0_0_20px_rgba(6,182,212,0.4)]"
                                 : "bg-white/5 text-white/60 hover:bg-white/10"
@@ -203,17 +203,17 @@ export default function Quantum11() {
                 </div>
 
                 <button
-                    onClick={startResonance}
-                    disabled={balance < betAmount || isResonating}
+                    onClick={startPulse}
+                    disabled={balance < betAmount || isPulsing}
                     className="w-full py-5 rounded-2xl bg-gradient-to-r from-cyan-600 to-blue-700 text-white font-display font-black text-xl uppercase tracking-[0.2em] shadow-xl disabled:opacity-50 active:scale-95 transition-all"
                 >
-                    {isResonating ? "Resonating..." : "Initiate Pulse"}
+                    {isPulsing ? "Pulsing..." : "Pulse Now"}
                 </button>
 
                 {balance < betAmount && (
                     <div className="flex items-center gap-2 text-rose-500 text-[10px] justify-center uppercase font-bold tracking-widest">
                         <AlertCircle className="w-3 h-3" />
-                        <span>Energy Depleted (Low Balance)</span>
+                        <span>Insufficient Funds</span>
                     </div>
                 )}
             </div>

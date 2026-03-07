@@ -18,8 +18,8 @@ export default function Profile() {
           👤
         </motion.div>
         <div className="text-center space-y-2">
-          <h2 className="text-2xl font-display font-bold">Sacred Profile</h2>
-          <p className="text-muted-foreground text-sm">Sign in to sync your chips and track your path to 11.</p>
+          <h2 className="text-2xl font-display font-bold">VIP Lounge</h2>
+          <p className="text-muted-foreground text-sm">Sign in to sync your chips and track your big wins.</p>
         </div>
 
         <div className="w-full space-y-3 mt-8">
@@ -37,7 +37,7 @@ export default function Profile() {
 
   return (
     <div className="space-y-6 pb-12">
-      <h2 className="text-2xl font-display font-bold">Your Profile</h2>
+      <h2 className="text-2xl font-display font-bold">VIP Lounge</h2>
 
       <div className="bg-card rounded-[2.5rem] p-8 border border-border/50 shadow-xl flex flex-col items-center text-center space-y-4">
         <div className="relative">
@@ -49,29 +49,29 @@ export default function Profile() {
           <div className="absolute bottom-1 right-1 w-6 h-6 bg-emerald-500 border-4 border-card rounded-full" />
         </div>
         <div>
-          <h3 className="text-2xl font-bold font-display tracking-tight">{user.displayName || 'Seeker'}</h3>
+          <h3 className="text-2xl font-bold font-display tracking-tight">{user.displayName || 'High Roller'}</h3>
           <p className="text-xs text-muted-foreground font-mono uppercase tracking-widest opacity-50 mt-1">UID: {user.uid.substring(0, 12)}...</p>
         </div>
 
         <div className="flex gap-2 w-full pt-4">
           <div className="flex-1 bg-secondary/30 rounded-2xl p-4 border border-border/50">
-            <div className="text-[10px] uppercase font-black tracking-[0.2em] text-muted-foreground mb-1">Rank</div>
+            <div className="text-[10px] uppercase font-black tracking-[0.2em] text-muted-foreground mb-1">VIP Level</div>
             <div className="font-bold text-primary flex items-center justify-center gap-1.5 italic">
-              <Trophy className="w-4 h-4" /> MASTER 11
+              <Trophy className="w-4 h-4" /> DIAMOND VIP
             </div>
           </div>
         </div>
       </div>
 
       <div className="space-y-3">
-        <h3 className="font-black text-[10px] uppercase tracking-[0.3em] text-muted-foreground px-4">Temple Settings</h3>
+        <h3 className="font-black text-[10px] uppercase tracking-[0.3em] text-muted-foreground px-4">Account Settings</h3>
 
         <div className="bg-card rounded-[2rem] border border-border/50 overflow-hidden shadow-lg">
-          <ProfileMenuItem icon={Settings} label="Governance" />
+          <ProfileMenuItem icon={Settings} label="Privacy & Data" />
           <div className="h-[1px] bg-border/50 mx-4" />
-          <ProfileMenuItem icon={Shield} label="Security Protocol" />
+          <ProfileMenuItem icon={Shield} label="Security & Verification" />
           <div className="h-[1px] bg-border/50 mx-4" />
-          <ProfileMenuItem icon={HelpCircle} label="Sanctuary Support" />
+          <ProfileMenuItem icon={HelpCircle} label="VIP Support" />
           <div className="h-[1px] bg-border/50 mx-4" />
           <div
             onClick={logout}
@@ -88,7 +88,7 @@ export default function Profile() {
       </div>
 
       <div className="text-center text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground opacity-30 pt-4">
-        ElevenWin Protocol v1.11.0
+        ElevenWin Casino v1.11.0
       </div>
     </div>
   );

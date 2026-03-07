@@ -34,7 +34,7 @@ const GAMES = [
   {
     id: "quantum11",
     name: "Quantum 11",
-    description: "Resonance Mastery",
+    description: "High Voltage Hits",
     image: "/images/quantum-cover.png",
     color: "from-blue-500/20 to-cyan-600/20",
     path: "/games/quantum11",
@@ -44,7 +44,7 @@ const GAMES = [
   {
     id: "celestial",
     name: "Celestial Path",
-    description: "Ascend the Stars",
+    description: "Space Stakes Climb",
     image: "/images/celestial-cover.png",
     color: "from-indigo-500/20 to-purple-600/20",
     path: "/games/celestial-path",
@@ -53,7 +53,7 @@ const GAMES = [
   {
     id: "harmonic",
     name: "Harmonic Wheel",
-    description: "Tuning Fork Physics",
+    description: "Imperial Multipliers",
     image: "/images/harmonic-cover.png",
     color: "from-amber-500/20 to-orange-600/20",
     path: "/games/harmonic-wheel",
@@ -61,8 +61,8 @@ const GAMES = [
   },
   {
     id: "matrix",
-    name: "Life Path Matrix",
-    description: "Universal Cycles",
+    name: "Jackpot Matrix",
+    description: "Jackpot Grid",
     image: "/images/matrix-cover.png",
     color: "from-slate-500/20 to-zinc-600/20",
     path: "/games/matrix",

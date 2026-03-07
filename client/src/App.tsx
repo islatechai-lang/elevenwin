@@ -13,7 +13,7 @@ import Plinko from "@/pages/games/Plinko";
 import Quantum11 from "@/pages/games/Quantum11";
 import CelestialPath from "@/pages/games/CelestialPath";
 import HarmonicWheel from "@/pages/games/HarmonicWheel";
-import LifePathMatrix from "@/pages/games/LifePathMatrix";
+import JackpotMatrix from "@/pages/games/JackpotMatrix";
 import Wallet from "@/pages/Wallet";
 import Profile from "@/pages/Profile";
 
@@ -33,7 +33,7 @@ function Router() {
         <Route path="/games/quantum11" component={Quantum11} />
         <Route path="/games/celestial-path" component={CelestialPath} />
         <Route path="/games/harmonic-wheel" component={HarmonicWheel} />
-        <Route path="/games/matrix" component={LifePathMatrix} />
+        <Route path="/games/matrix" component={JackpotMatrix} />
         <Route path="/wallet" component={Wallet} />
         <Route path="/profile" component={Profile} />
         <Route component={NotFound} />

@@ -5,7 +5,7 @@ import { Coins, AlertCircle, Grid, Zap } from "lucide-react";
 import { useAudio } from "@/hooks/use-audio";
 import confetti from "canvas-confetti";
 
-export default function LifePathMatrix() {
+export default function JackpotMatrix() {
     const { balance, updateBalance, addTransaction } = useAppStore();
     const { playSound } = useAudio();
     const [betAmount, setBetAmount] = useState(50);
@@ -66,7 +66,7 @@ export default function LifePathMatrix() {
             }
         });
 
-        setWinningIndices([...new Set(hitIndices)]);
+        setWinningIndices(Array.from(new Set(hitIndices)));
 
         const won = betAmount * totalMultiplier;
         if (won > 0) {
@@ -93,7 +93,7 @@ export default function LifePathMatrix() {
                     <Grid className="w-5 h-5 text-indigo-400" />
                 </button>
                 <div className="text-center">
-                    <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-500/50">Life Path</h1>
+                    <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-500/50">Jackpot</h1>
                     <div className="text-sm font-bold italic tracking-tighter">MATRIX V1.3</div>
                 </div>
                 <button
@@ -144,7 +144,7 @@ export default function LifePathMatrix() {
                             className="absolute inset-0 z-[60] flex items-center justify-center p-6 bg-black/60 backdrop-blur-md"
                         >
                             <div className="bg-slate-900 border border-indigo-500/30 p-8 rounded-[2.5rem] space-y-6 max-w-xs text-left">
-                                <h2 className="text-xl font-black text-indigo-400 uppercase italic">Matrix Logic</h2>
+                                <h2 className="text-xl font-black text-indigo-400 uppercase italic">Matrix Rules</h2>
                                 <div className="space-y-4">
                                     <div className="flex items-start gap-3">
                                         <div className="w-5 h-5 rounded bg-indigo-500/20 flex items-center justify-center text-[10px] font-bold text-indigo-400 mt-0.5">1</div>
@@ -152,10 +152,10 @@ export default function LifePathMatrix() {
                                     </div>
                                     <div className="flex items-start gap-3">
                                         <div className="w-5 h-5 rounded bg-indigo-500/20 flex items-center justify-center text-[10px] font-bold text-indigo-400 mt-0.5">2</div>
-                                        <p className="text-[10px] font-bold uppercase text-white/60 tracking-wider">Universal Sequence <span className="text-indigo-400">[3, 6, 9]</span> in any line = 11x Win.</p>
+                                        <p className="text-[10px] font-bold uppercase text-white/60 tracking-wider">Jackpot Sequence <span className="text-indigo-400">[3, 6, 9]</span> in any line = 11x Win.</p>
                                     </div>
                                 </div>
-                                <button onClick={() => setShowInfo(false)} className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black uppercase tracking-widest text-[10px]">Back to Grid</button>
+                                <button onClick={() => setShowInfo(false)} className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black uppercase tracking-widest text-[10px]">Back to Matrix</button>
                             </div>
                         </motion.div>
                     )}
@@ -165,7 +165,7 @@ export default function LifePathMatrix() {
             {/* Matrix Controls */}
             <div className="w-full max-w-md bg-white/[0.03] backdrop-blur-3xl rounded-t-[3rem] p-8 pb-12 border-t border-white/10 space-y-6 z-40">
                 <div className="flex justify-between items-center">
-                    <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Balance Stake</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Game Bet</span>
                     <div className="flex items-center gap-1.5 text-yellow-500 font-bold">
                         <Coins className="w-4 h-4" /> ₱{betAmount}
                     </div>
@@ -190,13 +190,13 @@ export default function LifePathMatrix() {
                     disabled={balance < betAmount || isCycled}
                     className="w-full py-5 rounded-[2rem] bg-indigo-600 text-white font-display font-black text-2xl uppercase tracking-[0.2em] shadow-[0_20px_40px_rgba(79,70,229,0.3)] active:scale-95 transition-all flex items-center justify-center gap-3"
                 >
-                    {isCycled ? <Zap className="animate-spin" /> : "Initiate Cycle"}
+                    {isCycled ? <Zap className="animate-spin" /> : "Spin Matrix"}
                 </button>
 
                 {balance < betAmount && (
                     <div className="flex items-center gap-2 text-rose-500 text-[10px] justify-center uppercase font-black tracking-widest">
                         <AlertCircle className="w-3 h-3" />
-                        <span>Matrix Synchronization Failed</span>
+                        <span>Insufficient Funds</span>
                     </div>
                 )}
             </div>

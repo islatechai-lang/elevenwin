@@ -1,19 +1,19 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { useAppStore } from "@/lib/store";
-import { Coins, AlertCircle, Music, Activity } from "lucide-react";
+import { Coins, AlertCircle, Music, Activity, Zap } from "lucide-react";
 import { useAudio } from "@/hooks/use-audio";
 import confetti from "canvas-confetti";
 
 const SECTIONS = [
     { multiplier: 0, color: "bg-slate-800", label: "Mute" },
-    { multiplier: 2, color: "bg-indigo-500", label: "Major 3rd" },
+    { multiplier: 2, color: "bg-indigo-500", label: "Minor Win" },
     { multiplier: 0.5, color: "bg-slate-700", label: "Flat" },
-    { multiplier: 11, color: "bg-yellow-500 shadow-[0_0_20px_rgba(234,179,8,0.5)]", label: "Master 11" },
-    { multiplier: 1.5, color: "bg-blue-500", label: "Perfect 5th" },
-    { multiplier: 0.2, color: "bg-slate-900", label: "Dissonance" },
-    { multiplier: 5, color: "bg-purple-500", label: "Octave" },
-    { multiplier: 1.2, color: "bg-cyan-500", label: "Harmonic" },
+    { multiplier: 11, color: "bg-yellow-500 shadow-[0_0_20px_rgba(234,179,8,0.5)]", label: "GRAND JACKPOT" },
+    { multiplier: 1.5, color: "bg-blue-500", label: "Standard Win" },
+    { multiplier: 0.2, color: "bg-slate-900", label: "DUD" },
+    { multiplier: 5, color: "bg-purple-500", label: "MEGA WIN" },
+    { multiplier: 1.2, color: "bg-cyan-500", label: "Lucky Hit" },
 ];
 
 export default function HarmonicWheel() {
@@ -81,8 +81,8 @@ export default function HarmonicWheel() {
                     <Music className="w-5 h-5 text-indigo-400" />
                 </button>
                 <div className="text-center">
-                    <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-500/50">Harmonic</h1>
-                    <div className="text-sm font-bold italic tracking-tighter uppercase">Wheel of Solfeggio</div>
+                    <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-indigo-500/50">Imperial</h1>
+                    <div className="text-sm font-bold italic tracking-tighter uppercase">GOLDEN WHEEL</div>
                 </div>
                 <button
                     onClick={() => setShowInfo(!showInfo)}
@@ -127,7 +127,7 @@ export default function HarmonicWheel() {
                         {/* Center Cap */}
                         <div className="absolute inset-0 flex items-center justify-center">
                             <div className="w-24 h-24 rounded-full bg-black/90 border-4 border-white/10 flex items-center justify-center shadow-2xl z-10">
-                                <Music className="w-8 h-8 text-indigo-400" />
+                                <Zap className="w-8 h-8 text-indigo-400" />
                             </div>
                         </div>
                     </motion.div>
@@ -142,7 +142,7 @@ export default function HarmonicWheel() {
                             className="absolute bottom-6 text-center z-30"
                         >
                             <div className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 mb-2">
-                                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/40">Resonance Detected</span>
+                                <span className="text-[9px] font-black uppercase tracking-[0.2em] text-white/40">Big Win Incoming</span>
                             </div>
                             <div className="text-4xl font-black italic uppercase tracking-tighter text-indigo-400 drop-shadow-[0_0_20px_rgba(129,140,248,0.5)]">
                                 {result.label} ({result.multiplier}x)
@@ -158,17 +158,17 @@ export default function HarmonicWheel() {
                             className="absolute inset-0 z-50 flex items-center justify-center p-6 bg-black/60 backdrop-blur-md"
                         >
                             <div className="bg-[#0c0c14] border border-indigo-500/20 p-8 rounded-[2.5rem] space-y-6 max-w-xs text-left">
-                                <h2 className="text-xl font-black text-indigo-400 uppercase italic">Tuning Logic</h2>
+                                <h2 className="text-xl font-black text-indigo-400 uppercase italic">Imperial Rules</h2>
                                 <p className="text-[10px] font-bold uppercase text-white/50 leading-loose">
-                                    Strike the tuning fork to spin the harmonic wheel. Land on sacred intervals to multiply your resonance.
+                                    Spin the imperial wheel to hit huge multipliers. Land on the gold sections to trigger the Grand Jackpot.
                                 </p>
                                 <div className="space-y-2">
                                     <div className="p-3 bg-white/5 rounded-xl border border-white/10 flex justify-between items-center">
-                                        <span className="text-[9px] font-black tracking-widest text-indigo-400 uppercase">Master 11 Zone</span>
+                                        <span className="text-[9px] font-black tracking-widest text-indigo-400 uppercase">Grand Jackpot</span>
                                         <span className="text-lg font-black italic">11x</span>
                                     </div>
                                 </div>
-                                <button onClick={() => setShowInfo(false)} className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black uppercase tracking-widest text-[10px]">Close Tuning</button>
+                                <button onClick={() => setShowInfo(false)} className="w-full py-4 bg-indigo-600 text-white rounded-2xl font-black uppercase tracking-widest text-[10px]">Back to Wheel</button>
                             </div>
                         </motion.div>
                     )}
@@ -179,7 +179,7 @@ export default function HarmonicWheel() {
             <div className="w-full max-w-md bg-white/[0.03] backdrop-blur-3xl rounded-t-[3rem] p-8 pb-12 border-t border-white/10 space-y-6 z-40">
                 <div className="flex justify-between items-center px-2">
                     <div className="flex flex-col">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Tuning Stake</span>
+                        <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Game Stake</span>
                         <div className="flex items-center gap-1.5 text-yellow-400 mt-1">
                             <Coins className="w-4 h-4" />
                             <span className="text-lg font-black tracking-tighter">₱{betAmount}</span>
@@ -207,7 +207,7 @@ export default function HarmonicWheel() {
                     disabled={balance < betAmount || isSpinning}
                     className="w-full py-5 rounded-3xl bg-gradient-to-br from-indigo-500 via-purple-600 to-indigo-700 text-white font-display font-black text-xl uppercase tracking-[0.2em] shadow-[0_15px_30px_rgba(99,102,241,0.3)] hover:shadow-indigo-500/50 disabled:opacity-50 active:translate-y-1 transition-all flex items-center justify-center gap-3 overflow-hidden relative"
                 >
-                    {isSpinning ? "Synchronizing Resonance..." : "Strike Fork"}
+                    {isSpinning ? "Spinning for Gold..." : "Spin Wheel"}
                     {/* Shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg] animate-[shine_3s_infinite]" />
                 </button>
@@ -215,7 +215,7 @@ export default function HarmonicWheel() {
                 {balance < betAmount && (
                     <div className="flex items-center gap-2 text-rose-500 text-[10px] justify-center uppercase font-black tracking-widest animate-pulse">
                         <AlertCircle className="w-3 h-3" />
-                        <span>Low Harmonic Energy</span>
+                        <span>Insufficient Funds</span>
                     </div>
                 )}
             </div>
