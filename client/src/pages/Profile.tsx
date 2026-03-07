@@ -72,15 +72,20 @@ export default function Profile() {
           <ProfileMenuItem icon={Shield} label="Security Protocol" />
           <div className="h-[1px] bg-border/50 mx-4" />
           <ProfileMenuItem icon={HelpCircle} label="Sanctuary Support" />
+          <div className="h-[1px] bg-border/50 mx-4" />
+          <div
+            onClick={logout}
+            className="flex items-center justify-between p-5 active:bg-destructive/10 transition-colors cursor-pointer group"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-xl bg-destructive/10 flex items-center justify-center group-hover:bg-destructive/20 transition-colors">
+                <LogOut className="w-5 h-5 text-destructive" />
+              </div>
+              <span className="font-bold text-sm text-destructive">Sign Out</span>
+            </div>
+          </div>
         </div>
       </div>
-
-      <button
-        onClick={logout}
-        className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl text-destructive font-black uppercase tracking-widest text-xs bg-destructive/5 border border-destructive/10 active:bg-destructive/10 transition-all"
-      >
-        <LogOut className="w-4 h-4" /> Terminate Session
-      </button>
 
       <div className="text-center text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground opacity-30 pt-4">
         ElevenWin Protocol v1.11.0
