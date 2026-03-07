@@ -11,7 +11,6 @@ export function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -25,13 +24,15 @@ export function Header() {
   }, [dropdownOpen]);
 
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-[#0a0a0f]/90 border-b border-white/5 backdrop-blur-xl">
-      <div className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
-          <span className="font-display font-bold text-primary-foreground text-lg">E</span>
+    <header className="sticky top-0 z-50 flex items-center justify-between px-4 py-3 bg-[#0a0a0f]/90 border-b border-white/5 backdrop-blur-xl shrink-0">
+      {/* Logo - clickable to go home */}
+      <Link href="/">
+        <div className="flex items-center gap-2 cursor-pointer active:scale-95 transition-transform">
+          <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+            <span className="font-display font-bold text-primary-foreground text-lg">E</span>
+          </div>
         </div>
-        <span className="font-display font-bold text-lg text-foreground tracking-wider italic">ELEVEN<span className="text-primary">WIN</span></span>
-      </div>
+      </Link>
 
       <div className="flex items-center gap-3">
         <AnimatePresence mode="wait">
@@ -64,12 +65,12 @@ export function Header() {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className="flex items-center gap-1 active:scale-95 transition-transform"
+                  className="flex items-center gap-1"
                 >
                   <img
                     src={user.photoURL || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.uid}`}
                     alt="Avatar"
-                    className="w-9 h-9 rounded-full border-2 border-primary/30 p-0.5"
+                    className="w-9 h-9 rounded-full border-2 border-primary/30 object-cover"
                   />
                   <ChevronDown className={`w-3 h-3 text-white/50 transition-transform ${dropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -83,13 +84,11 @@ export function Header() {
                       transition={{ duration: 0.15 }}
                       className="absolute right-0 top-full mt-2 w-52 bg-[#1a1a24] border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-[100]"
                     >
-                      {/* User Info */}
                       <div className="px-4 py-3 border-b border-white/5">
                         <div className="font-bold text-sm text-white truncate">{user.displayName || 'High Roller'}</div>
                         <div className="text-[10px] text-white/40 font-mono truncate">{user.email}</div>
                       </div>
 
-                      {/* Menu Items */}
                       <Link href="/wallet" onClick={() => setDropdownOpen(false)}>
                         <div className="flex items-center gap-3 px-4 py-3 hover:bg-white/5 active:bg-white/10 transition-colors cursor-pointer">
                           <Wallet className="w-4 h-4 text-primary" />
