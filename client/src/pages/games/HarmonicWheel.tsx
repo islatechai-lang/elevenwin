@@ -6,14 +6,14 @@ import { useAudio } from "@/hooks/use-audio";
 import confetti from "canvas-confetti";
 
 const SECTIONS = [
-    { multiplier: 0.8, color: "bg-slate-700", label: "Small Kickback" },
+    { multiplier: 0, color: "bg-slate-800", label: "Mute" },
     { multiplier: 2, color: "bg-indigo-500", label: "Minor Win" },
-    { multiplier: 1.5, color: "bg-blue-400", label: "Solid Return" },
+    { multiplier: 0.5, color: "bg-slate-700", label: "Flat" },
     { multiplier: 11, color: "bg-yellow-500 shadow-[0_0_20px_rgba(234,179,8,0.5)]", label: "GRAND JACKPOT" },
-    { multiplier: 1.8, color: "bg-blue-600", label: "Standard Win" },
-    { multiplier: 1.2, color: "bg-cyan-600", label: "Lucky Hit" },
+    { multiplier: 1.5, color: "bg-blue-500", label: "Standard Win" },
+    { multiplier: 0.2, color: "bg-slate-900", label: "DUD" },
     { multiplier: 5, color: "bg-purple-500", label: "MEGA WIN" },
-    { multiplier: 1.4, color: "bg-cyan-500", label: "Quick Profit" },
+    { multiplier: 1.2, color: "bg-cyan-500", label: "Lucky Hit" },
 ];
 
 export default function HarmonicWheel() {

@@ -98,7 +98,7 @@ export default function Home() {
 
         <div className="grid grid-cols-2 gap-4">
           {GAMES.map((game, i) => (
-            <Link key={game.id} href={game.path} className={i === 2 ? "col-span-2" : ""}>
+            <Link key={game.id} href={game.path}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
