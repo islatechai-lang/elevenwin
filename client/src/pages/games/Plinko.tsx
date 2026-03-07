@@ -17,6 +17,7 @@ export default function Plinko() {
   const [betAmount, setBetAmount] = useState(50);
   const [balls, setBalls] = useState<{ id: string; framesX: number[]; framesY: string[]; resultIndex: number }[]>([]);
   const [isDropping, setIsDropping] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -117,7 +118,47 @@ export default function Plinko() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-128px)] sm:h-full space-y-2 overflow-hidden items-center justify-center pt-2 pb-2">
+    <div className="flex flex-col h-[calc(100vh-64px)] items-center bg-[#0a0a0f] text-white overflow-hidden safe-area-inset-top">
+      {/* Header */}
+      <div className="w-full flex justify-between items-center p-4 z-50">
+        <button onClick={() => window.history.back()} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+          <ArrowLeft className="w-5 h-5 text-rose-400" />
+        </button>
+        <div className="text-center">
+          <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-rose-400/50">Arcade</h1>
+          <div className="text-sm font-bold italic tracking-tighter uppercase">PLINKO DROP</div>
+        </div>
+        <button
+          onClick={() => setShowInfo(!showInfo)}
+          className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-rose-400 font-bold"
+        >
+          ?
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {showInfo && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="absolute inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+          >
+            <div className="bg-[#0c0c14] border border-rose-500/20 p-8 rounded-[2.5rem] space-y-6 max-w-xs text-left">
+              <h2 className="text-xl font-black text-rose-400 uppercase italic">Plinko Rules</h2>
+              <p className="text-[10px] font-bold uppercase text-white/50 leading-loose">
+                Drop the ball and watch it bounce through the pins.
+                <br /><br />
+                The multiplier landing determines your win!
+                <br /><br />
+                Outer bins pay the most.
+              </p>
+              <button onClick={() => setShowInfo(false)} className="w-full py-4 bg-rose-600 text-white rounded-2xl font-black uppercase tracking-widest text-[10px]">Back to Casino</button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Main 3D Game Area */}
       <div className="bg-gradient-to-b from-slate-900 to-black border-4 border-slate-800 border-b-slate-900 rounded-[2.5rem] p-4 shadow-[inset_0_20px_40px_rgba(0,0,0,0.8),0_20px_40px_rgba(0,0,0,0.5)] relative overflow-hidden flex flex-col items-center flex-grow w-full max-w-md min-h-[300px]">
 

@@ -20,6 +20,7 @@ export default function Slots() {
   const [isPulling, setIsPulling] = useState(false);
   const [betAmount, setBetAmount] = useState(50);
   const [winAmount, setWinAmount] = useState(0);
+  const [showInfo, setShowInfo] = useState(false);
 
 
   const leverControls = useAnimation();
@@ -96,9 +97,53 @@ export default function Slots() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-128px)] sm:h-full space-y-2 pt-2 pb-2 overflow-hidden items-center justify-center">
+    <div className="flex flex-col h-[calc(100vh-64px)] items-center bg-[#0a0a0f] text-white overflow-hidden safe-area-inset-top">
+      {/* Header */}
+      <div className="w-full flex justify-between items-center p-4 z-50">
+        <button onClick={() => window.history.back()} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+          <ArrowLeft className="w-5 h-5 text-yellow-500" />
+        </button>
+        <div className="text-center">
+          <h1 className="text-[10px] font-black tracking-[0.3em] uppercase text-yellow-500/50">Elite</h1>
+          <div className="text-sm font-bold italic tracking-tighter uppercase">CLASSIC SLOTS</div>
+        </div>
+        <button
+          onClick={() => setShowInfo(!showInfo)}
+          className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-yellow-500 font-bold"
+        >
+          ?
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {showInfo && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="absolute inset-0 z-[100] flex items-center justify-center p-6 bg-black/80 backdrop-blur-md"
+          >
+            <div className="bg-[#0c0c14] border border-yellow-500/20 p-8 rounded-[2.5rem] space-y-6 max-w-xs text-left">
+              <h2 className="text-xl font-black text-yellow-400 uppercase italic">Slots Rules</h2>
+              <p className="text-[10px] font-bold uppercase text-white/50 leading-loose">
+                Match symbols across the center line to win. 3-of-a-kind pays BIG.
+                <br /><br />
+                7️⃣7️⃣7️⃣ = 20x Multiplier
+                <br />
+                💎💎💎 = 10x Multiplier
+                <br />
+                Any 3 Match = 5x Multiplier
+                <br />
+                Any 2 Match = 1.5x Multiplier
+              </p>
+              <button onClick={() => setShowInfo(false)} className="w-full py-4 bg-yellow-600 text-white rounded-2xl font-black uppercase tracking-widest text-[10px]">Back to Casino</button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* 3D Slot Machine Container */}
-      <div className="relative w-full max-w-2xl mx-auto transform-gpu perspective-[1000px] mt-2 mb-2 flex-grow flex flex-col justify-center">
+      <div className="relative w-full max-w-2xl mx-auto transform-gpu perspective-[1000px] mt-2 mb-2 flex-grow flex flex-col justify-center px-4">
 
         <div className="bg-gradient-to-b from-gray-800 to-black rounded-t-[2.5rem] rounded-b-2xl p-4 shadow-[inset_0_4px_20px_rgba(255,255,255,0.1),_0_20px_50px_rgba(0,0,0,0.9)] border-t border-gray-600 relative z-10">
 
