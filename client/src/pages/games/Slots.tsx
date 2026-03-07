@@ -242,49 +242,51 @@ export default function Slots() {
 
         </div>
 
-        {/* Controls */}
-        <div className="w-full shrink-0 px-4 pb-8 space-y-2">
-          <div className="flex justify-between items-center text-xs font-medium">
-            <span className="text-muted-foreground">Bet Amount</span>
-            <div className="flex items-center gap-1 text-primary">
-              <Coins className="w-4 h-4" />
-              <span className="font-bold">₱{betAmount.toLocaleString()}</span>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-4 gap-2">
-            {betPresets.map((amt) => (
-              <button
-                key={amt}
-                onClick={() => setBetAmount(amt)}
-                disabled={isSpinning || isPulling}
-                className={`py-2 rounded-xl font-bold text-xs transition-all active:scale-95 ${betAmount === amt
-                  ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20'
-                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-                  }`}
-              >
-                ₱{amt}
-              </button>
-            ))}
-          </div>
-
-          {balance < betAmount && (
-            <div className="flex items-center gap-2 text-destructive text-[10px] justify-center">
-              <AlertCircle className="w-3 h-3" />
-              <span>Insufficient balance</span>
-            </div>
-          )}
-
-          <button
-            onClick={triggerSpinSequence}
-            disabled={isSpinning || isPulling || balance < betAmount}
-            className="w-full py-3 rounded-xl bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 text-black font-display font-black text-base uppercase tracking-widest shadow-[0_8px_16px_rgba(234,179,8,0.3)] disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] transition-all relative overflow-hidden"
-          >
-            {isSpinning || isPulling ? 'SPINNING...' : 'PULL TO SPIN'}
-            {/* Shine effect */}
-            <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-20deg] animate-[shine_3s_infinite]" />
-          </button>
-        </div>
       </div>
-      );
+
+      {/* Controls */}
+      <div className="w-full shrink-0 px-4 pb-8 space-y-2">
+        <div className="flex justify-between items-center text-xs font-medium">
+          <span className="text-muted-foreground">Bet Amount</span>
+          <div className="flex items-center gap-1 text-primary">
+            <Coins className="w-4 h-4" />
+            <span className="font-bold">₱{betAmount.toLocaleString()}</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-4 gap-2">
+          {betPresets.map((amt) => (
+            <button
+              key={amt}
+              onClick={() => setBetAmount(amt)}
+              disabled={isSpinning || isPulling}
+              className={`py-2 rounded-xl font-bold text-xs transition-all active:scale-95 ${betAmount === amt
+                ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20'
+                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                }`}
+            >
+              ₱{amt}
+            </button>
+          ))}
+        </div>
+
+        {balance < betAmount && (
+          <div className="flex items-center gap-2 text-destructive text-[10px] justify-center">
+            <AlertCircle className="w-3 h-3" />
+            <span>Insufficient balance</span>
+          </div>
+        )}
+
+        <button
+          onClick={triggerSpinSequence}
+          disabled={isSpinning || isPulling || balance < betAmount}
+          className="w-full py-3 rounded-xl bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 text-black font-display font-black text-base uppercase tracking-widest shadow-[0_8px_16px_rgba(234,179,8,0.3)] disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] transition-all relative overflow-hidden"
+        >
+          {isSpinning || isPulling ? 'SPINNING...' : 'PULL TO SPIN'}
+          {/* Shine effect */}
+          <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/50 to-transparent skew-x-[-20deg] animate-[shine_3s_infinite]" />
+        </button>
+      </div>
+    </div>
+  );
 }
