@@ -115,7 +115,7 @@ export default function Dice() {
 
       {/* 3D Dice Game Area - takes remaining space */}
       <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden px-4 min-h-0">
-        <div className="bg-gradient-to-br from-slate-900 to-black border-2 border-slate-800 rounded-3xl p-3 shadow-[inset_0_10px_20px_rgba(0,0,0,0.8)] relative overflow-hidden flex flex-col items-center justify-center w-full max-w-md aspect-square max-h-[40vh]">
+        <div className="bg-gradient-to-br from-slate-900 to-black border-2 border-slate-800 rounded-3xl p-3 shadow-[inset_0_10px_20px_rgba(0,0,0,0.8)] relative overflow-hidden flex flex-col items-center justify-center w-full h-full">
           <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(52,211,153,0.1)_0%,transparent_60%)] z-0" />
 
           {/* Stats overlay */}

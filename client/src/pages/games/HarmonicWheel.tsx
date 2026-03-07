@@ -95,7 +95,7 @@ export default function HarmonicWheel() {
             </div>
 
             {/* Visualizer Area */}
-            <div className="relative flex-grow w-full flex items-center justify-center px-4 -mt-8">
+            <div className="relative flex-1 min-h-0 w-full flex items-center justify-center px-4">
                 {/* Glow behind wheel */}
                 <div className="absolute w-64 h-64 bg-indigo-500/20 blur-[120px] rounded-full pointer-events-none" />
 

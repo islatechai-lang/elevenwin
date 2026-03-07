@@ -240,7 +240,7 @@ export default function Plinko() {
       </div>
 
       {/* Controls */}
-      <div className="w-full bg-card rounded-t-3xl p-4 border border-border/50 material-shadow space-y-4 relative z-40">
+      <div className="w-full shrink-0 px-4 pb-3 space-y-2">
         <div className="flex justify-between items-center text-xs font-medium">
           <span className="text-muted-foreground">Bet Amount</span>
           <div className="flex items-center gap-1 text-primary">
