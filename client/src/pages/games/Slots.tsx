@@ -218,6 +218,28 @@ export default function Slots() {
             </div>
           </div>
 
+          {/* Win Display Screen */}
+          <div className="h-10 mt-4 flex items-center justify-center bg-black rounded-lg border-2 border-gray-800 shadow-inner overflow-hidden relative">
+            <div className="absolute inset-0 opacity-20 bg-[linear-gradient(90deg,transparent_50%,rgba(255,255,255,0.1)_50%)] bg-[length:4px_100%]" />
+            <AnimatePresence>
+              {winAmount > 0 && !isSpinning && !isPulling && (
+                <motion.div
+                  initial={{ scale: 0.5, opacity: 0, y: 10 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.5, opacity: 0 }}
+                  className="font-display font-black text-xl text-green-400 drop-shadow-[0_0_12px_rgba(74,222,128,0.8)] tracking-wider"
+                >
+                  +₱{winAmount.toLocaleString()}
+                </motion.div>
+              )}
+            </AnimatePresence>
+            {(winAmount === 0 || isSpinning || isPulling) && (
+              <div className="font-display font-bold text-[10px] text-gray-700 tracking-widest uppercase text-center">
+                {isSpinning ? "Good Luck" : "Insert Coin"}
+              </div>
+            )}
+          </div>
+
         </div>
 
         {/* Controls */}
