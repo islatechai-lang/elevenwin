@@ -36,7 +36,7 @@ export default function Profile() {
   }
 
   return (
-    <div className="space-y-6 pb-12">
+    <div className="space-y-6 pb-12 px-4 pt-4">
       <h2 className="text-2xl font-display font-bold">VIP Lounge</h2>
 
       <div className="bg-card rounded-[2.5rem] p-8 border border-border/50 shadow-xl flex flex-col items-center text-center space-y-4">

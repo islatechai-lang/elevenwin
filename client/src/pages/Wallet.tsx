@@ -12,7 +12,7 @@ export default function Wallet() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 px-4 pt-4 pb-8">
       <h2 className="text-2xl font-display font-bold">Wallet</h2>
 
       <div className="bg-gradient-to-br from-primary/90 to-primary rounded-3xl p-6 text-primary-foreground shadow-lg relative overflow-hidden">
@@ -61,8 +61,8 @@ export default function Wallet() {
               >
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center ${tx.type === 'win' ? 'bg-emerald-500/10 text-emerald-500' :
-                      tx.type === 'loss' ? 'bg-destructive/10 text-destructive' :
-                        'bg-primary/10 text-primary'
+                    tx.type === 'loss' ? 'bg-destructive/10 text-destructive' :
+                      'bg-primary/10 text-primary'
                     }`}>
                     {tx.type === 'win' ? <ArrowDownToLine className="w-5 h-5" /> :
                       tx.type === 'loss' ? <ArrowUpFromLine className="w-5 h-5" /> :

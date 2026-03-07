@@ -97,7 +97,7 @@ export default function Slots() {
   };
 
   return (
-    <div className="flex flex-col min-h-[calc(100vh-64px)] items-center bg-[#0a0a0f] text-white safe-area-inset-top">
+    <div className="flex flex-col h-screen bg-[#0a0a0f] text-white overflow-hidden">
       {/* Header */}
       <div className="w-full flex justify-between items-center p-4 z-50">
         <button onClick={() => window.history.back()} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
@@ -143,7 +143,7 @@ export default function Slots() {
       </AnimatePresence>
 
       {/* 3D Slot Machine Container */}
-      <div className="relative w-full max-w-2xl mx-auto transform-gpu perspective-[1000px] mt-2 mb-2 flex-grow flex flex-col justify-center px-4">
+      <div className="relative w-full max-w-2xl mx-auto flex-1 min-h-0 flex flex-col justify-center px-4">
 
         <div className="bg-gradient-to-b from-gray-800 to-black rounded-t-[2.5rem] rounded-b-2xl p-4 shadow-[inset_0_4px_20px_rgba(255,255,255,0.1),_0_20px_50px_rgba(0,0,0,0.9)] border-t border-gray-600 relative z-10">
 
@@ -240,7 +240,7 @@ export default function Slots() {
       </div>
 
       {/* Controls */}
-      <div className="w-full bg-card rounded-t-3xl p-4 border border-border/50 material-shadow space-y-4 relative z-20">
+      <div className="w-full shrink-0 px-4 pb-4 space-y-3">
         <div className="flex justify-between items-center text-xs font-medium">
           <span className="text-muted-foreground">Bet Amount</span>
           <div className="flex items-center gap-1 text-primary">
@@ -275,7 +275,7 @@ export default function Slots() {
         <button
           onClick={triggerSpinSequence}
           disabled={isSpinning || isPulling || balance < betAmount}
-          className="w-full py-4 rounded-xl bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 text-black font-display font-black text-xl uppercase tracking-widest shadow-[0_10px_20px_rgba(234,179,8,0.3),inset_0_-4px_0_rgba(202,138,4,0.8)] disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] active:shadow-[0_0_0_transparent,inset_0_4px_0_rgba(202,138,4,0.8)] active:translate-y-1 transition-all relative overflow-hidden"
+          className="w-full py-3.5 rounded-xl bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 text-black font-display font-black text-lg uppercase tracking-widest shadow-[0_8px_16px_rgba(234,179,8,0.3)] disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] transition-all relative overflow-hidden"
         >
           {isSpinning || isPulling ? 'SPINNING...' : 'PULL TO SPIN'}
           {/* Shine effect */}

@@ -44,7 +44,7 @@ const GAMES = [
 
 export default function Home() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 px-4 pt-4 pb-8">
       {/* Hero Banner */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

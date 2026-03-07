@@ -74,7 +74,7 @@ export default function HarmonicWheel() {
     };
 
     return (
-        <div className="flex flex-col min-h-[calc(100vh-64px)] items-center bg-[#0a0a0f] text-white safe-area-inset-top">
+        <div className="flex flex-col h-screen bg-[#0a0a0f] text-white overflow-hidden">
             {/* Header */}
             <div className="w-full flex justify-between items-center p-4 z-50">
                 <button onClick={() => window.history.back()} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
@@ -176,7 +176,7 @@ export default function HarmonicWheel() {
             </div>
 
             {/* Controls Container */}
-            <div className="w-full max-w-md bg-card rounded-t-3xl p-4 border border-border/50 material-shadow space-y-4 relative z-20">
+            <div className="w-full shrink-0 px-4 pb-4 space-y-3">
                 <div className="flex justify-between items-center text-xs font-medium">
                     <span className="text-muted-foreground">Bet Amount</span>
                     <div className="flex items-center gap-1 text-primary">

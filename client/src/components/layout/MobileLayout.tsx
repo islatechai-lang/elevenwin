@@ -1,5 +1,4 @@
 import { Header } from "./Header";
-import { BottomNav } from "./BottomNav";
 
 interface MobileLayoutProps {
   children: React.ReactNode;
@@ -7,12 +6,11 @@ interface MobileLayoutProps {
 
 export function MobileLayout({ children }: MobileLayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen bg-[#0a0a0f] relative overflow-hidden">
+    <div className="flex flex-col h-screen bg-[#0a0a0f] relative overflow-hidden">
       <Header />
-      <main className="flex-1 overflow-y-auto pb-20 hide-scrollbar">
+      <main className="flex-1 overflow-y-auto hide-scrollbar">
         {children}
       </main>
-      <BottomNav />
     </div>
   );
 }

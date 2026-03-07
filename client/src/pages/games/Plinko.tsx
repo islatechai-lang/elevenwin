@@ -118,7 +118,7 @@ export default function Plinko() {
   };
 
   return (
-    <div className="flex flex-col min-h-[calc(100vh-64px)] items-center bg-[#0a0a0f] text-white safe-area-inset-top">
+    <div className="flex flex-col h-screen bg-[#0a0a0f] text-white overflow-hidden">
       {/* Header */}
       <div className="w-full flex justify-between items-center p-4 z-50">
         <button onClick={() => window.history.back()} className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
@@ -160,7 +160,7 @@ export default function Plinko() {
       </AnimatePresence>
 
       {/* Main 3D Game Area */}
-      <div className="bg-gradient-to-b from-slate-900 to-black border-4 border-slate-800 border-b-slate-900 rounded-[2.5rem] p-4 shadow-[inset_0_20px_40px_rgba(0,0,0,0.8),0_20px_40px_rgba(0,0,0,0.5)] relative overflow-hidden flex flex-col items-center flex-grow w-full max-w-md min-h-[300px]">
+      <div className="bg-gradient-to-b from-slate-900 to-black border-2 border-slate-800 rounded-3xl mx-4 p-4 shadow-[inset_0_10px_20px_rgba(0,0,0,0.8)] relative overflow-hidden flex flex-col items-center flex-1 min-h-0">
 
         {/* Glass Reflection */}
         <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none" />
