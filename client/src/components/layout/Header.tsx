@@ -28,9 +28,11 @@ export function Header() {
       {/* Logo - clickable to go home */}
       <Link href="/">
         <div className="flex items-center gap-2 cursor-pointer active:scale-95 transition-transform">
-          <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
-            <span className="font-display font-bold text-primary-foreground text-lg">E</span>
-          </div>
+          <img
+            src="/logo.png"
+            alt="ElevenWin Logo"
+            className="w-10 h-10 object-contain drop-shadow-lg"
+          />
         </div>
       </Link>
 
