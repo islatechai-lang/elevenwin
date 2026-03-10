@@ -28,13 +28,13 @@ export function Header() {
       {/* Logo - clickable to go home */}
       <Link href="/">
         <div className="flex items-center gap-2 cursor-pointer active:scale-95 transition-transform">
-          <h1 className="text-xl font-display font-black tracking-widest text-primary italic drop-shadow-md">
+          <h1 className="text-lg sm:text-xl font-display font-black tracking-wider text-primary italic drop-shadow-md">
             ELEVENWIN
           </h1>
         </div>
       </Link>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <AnimatePresence mode="wait">
           {!user ? (
             <motion.button
@@ -53,14 +53,14 @@ export function Header() {
               key="user-info"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 sm:gap-3"
             >
               {/* Balance Pill w/ Add Funds */}
               <Link href="/deposit">
                 <div className="flex items-center cursor-pointer active:scale-95 transition-all group">
-                  <div className="flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-full px-4 py-1.5 border border-white/10 shadow-inner group-hover:border-primary/30 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.15)] transition-all">
-                    <span className="font-bold text-sm tracking-tight text-white group-hover:text-primary transition-colors">₱{balance.toLocaleString()}</span>
-                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-colors">
+                  <div className="flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-full pl-3 pr-1 py-1 border border-white/10 shadow-inner group-hover:border-primary/30 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.15)] transition-all">
+                    <span className="font-bold text-xs sm:text-sm tracking-tight text-white group-hover:text-primary transition-colors">₱{balance.toLocaleString()}</span>
+                    <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-colors">
                       <Plus className="w-3.5 h-3.5 text-primary group-hover:text-primary-foreground transition-colors" />
                     </div>
                   </div>
