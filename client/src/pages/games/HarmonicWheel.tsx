@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import { useAppStore } from "@/lib/store";
-import { Coins, AlertCircle, ArrowLeft, Activity, Zap } from "lucide-react";
+import { Coins, AlertCircle, ArrowLeft, Activity, Zap, Plus } from "lucide-react";
 import { useAudio } from "@/hooks/use-audio";
 import confetti from "canvas-confetti";
 
@@ -81,10 +81,14 @@ export default function HarmonicWheel() {
                     <ArrowLeft className="w-5 h-5 text-indigo-400" />
                 </button>
                 <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-1.5 bg-white/5 rounded-full px-3 py-1.5 border border-white/10">
-                        <Coins className="w-3.5 h-3.5 text-primary" />
-                        <span className="font-bold text-xs text-white">₱{balance.toLocaleString()}</span>
-                    </div>
+                    <Link href="/deposit">
+                        <div className="flex items-center gap-1.5 bg-white/5 hover:bg-white/10 rounded-full pl-1 pr-3 py-1 border border-white/10 shadow-inner group-hover:border-primary/30 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.15)] transition-all cursor-pointer active:scale-95 group">
+                            <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-colors">
+                                <Plus className="w-3.5 h-3.5 text-primary group-hover:text-primary-foreground transition-colors" />
+                            </div>
+                            <span className="font-bold text-xs sm:text-sm tracking-tight text-white group-hover:text-primary transition-colors">₱{balance.toLocaleString()}</span>
+                        </div>
+                    </Link>
                     <button
                         onClick={() => setShowInfo(!showInfo)}
                         className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-indigo-400 font-bold"

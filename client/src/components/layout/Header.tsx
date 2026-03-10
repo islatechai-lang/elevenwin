@@ -58,11 +58,11 @@ export function Header() {
               {/* Balance Pill w/ Add Funds */}
               <Link href="/deposit">
                 <div className="flex items-center cursor-pointer active:scale-95 transition-all group">
-                  <div className="flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-full pl-3 pr-1 py-1 border border-white/10 shadow-inner group-hover:border-primary/30 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.15)] transition-all">
-                    <span className="font-bold text-xs sm:text-sm tracking-tight text-white group-hover:text-primary transition-colors">₱{balance.toLocaleString()}</span>
+                  <div className="flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-full pl-1 pr-3 py-1 border border-white/10 shadow-inner group-hover:border-primary/30 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.15)] transition-all">
                     <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-colors">
                       <Plus className="w-3.5 h-3.5 text-primary group-hover:text-primary-foreground transition-colors" />
                     </div>
+                    <span className="font-bold text-xs sm:text-sm tracking-tight text-white group-hover:text-primary transition-colors">₱{balance.toLocaleString()}</span>
                   </div>
                 </div>
               </Link>
