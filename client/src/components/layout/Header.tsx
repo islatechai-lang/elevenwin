@@ -28,11 +28,9 @@ export function Header() {
       {/* Logo - clickable to go home */}
       <Link href="/">
         <div className="flex items-center gap-2 cursor-pointer active:scale-95 transition-transform">
-          <img
-            src="/logo.png"
-            alt="ElevenWin Logo"
-            className="w-10 h-10 object-contain drop-shadow-lg"
-          />
+          <h1 className="text-xl font-display font-black tracking-widest text-primary italic drop-shadow-md">
+            ELEVENWIN
+          </h1>
         </div>
       </Link>
 
@@ -57,18 +55,17 @@ export function Header() {
               animate={{ opacity: 1, scale: 1 }}
               className="flex items-center gap-2"
             >
-              {/* Balance Pill + Add Funds */}
-              <div className="flex items-center gap-2">
-                <div className="flex items-center gap-1.5 bg-white/5 rounded-full px-3 py-1.5 border border-white/10 shadow-inner">
-                  <Coins className="w-4 h-4 text-primary" />
-                  <span className="font-bold text-sm tracking-tight text-white">₱{balance.toLocaleString()}</span>
+              {/* Balance Pill w/ Add Funds */}
+              <Link href="/deposit">
+                <div className="flex items-center cursor-pointer active:scale-95 transition-all group">
+                  <div className="flex items-center gap-2 bg-white/5 hover:bg-white/10 rounded-full px-4 py-1.5 border border-white/10 shadow-inner group-hover:border-primary/30 group-hover:shadow-[0_0_15px_rgba(212,175,55,0.15)] transition-all">
+                    <span className="font-bold text-sm tracking-tight text-white group-hover:text-primary transition-colors">₱{balance.toLocaleString()}</span>
+                    <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary transition-colors">
+                      <Plus className="w-3.5 h-3.5 text-primary group-hover:text-primary-foreground transition-colors" />
+                    </div>
+                  </div>
                 </div>
-                <Link href="/deposit">
-                  <button className="flex items-center justify-center w-[34px] h-[34px] bg-primary text-primary-foreground rounded-full shadow-lg shadow-primary/20 active:scale-95 transition-all">
-                    <Plus className="w-4 h-4" />
-                  </button>
-                </Link>
-              </div>
+              </Link>
 
               {/* Profile Avatar + Dropdown */}
               <div className="relative" ref={dropdownRef}>
