@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { doc, updateDoc, arrayUnion, increment } from 'firebase/firestore';
+import { doc, updateDoc, arrayUnion, increment, Timestamp } from 'firebase/firestore';
 import { db } from './firebase';
 
 interface User {
@@ -58,8 +58,6 @@ export const useAppStore = create<AppState>((set, get) => ({
   setTransactions: (transactions) => set({ transactions }),
   addTransaction: async (amount, type) => {
     const { user } = get();
-    // Using Timestamp.now() for proper Firestore serialization instead of raw Date object
-    const { Timestamp } = await import('firebase/firestore');
 
     const newTransaction = {
       id: Math.random().toString(36).substring(7),
