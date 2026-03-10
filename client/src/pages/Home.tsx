@@ -86,26 +86,25 @@ export default function Home() {
       </div>
 
       {/* Game Selection */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         <div className="flex items-center justify-between px-1">
-          <h3 className="font-bold text-xl font-display tracking-tight uppercase italic text-primary">Earn Your Chips</h3>
+          <h3 className="font-bold text-lg font-display tracking-tight text-primary">Earn Your Chips</h3>
           <Link href="/">
-            <span className="text-xs font-bold text-primary flex items-center cursor-pointer uppercase tracking-widest hover:underline decoration-2 underline-offset-4 transition-all">
+            <span className="text-xs font-bold text-primary flex items-center cursor-pointer uppercase tracking-wider hover:underline decoration-2 underline-offset-4 transition-all">
               See All <ChevronRight className="w-4 h-4 ml-0.5" />
             </span>
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-3">
           {GAMES.map((game, i) => (
             <Link key={game.id} href={game.path}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative overflow-hidden rounded-[2rem] aspect-[4/5] sm:aspect-[16/9] shadow-2xl border border-white/10 material-shadow"
+                whileTap={{ scale: 0.97 }}
+                className="group relative overflow-hidden rounded-2xl aspect-[3/4] shadow-xl border border-white/10"
               >
                 {/* Game Image */}
                 <img
@@ -114,38 +113,32 @@ export default function Home() {
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
-                {/* Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80" />
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-black/10" />
 
                 {/* Badge (Hot) */}
                 {game.badge && (
-                  <div className="absolute top-4 left-4 z-20">
-                    <span className="text-[10px] font-black px-3 py-1 rounded-full bg-rose-500 text-white uppercase tracking-widest shadow-[0_0_15px_rgba(244,63,94,0.5)]">
+                  <div className="absolute top-3 left-3 z-20">
+                    <span className="text-[9px] font-black px-2.5 py-0.5 rounded-full bg-rose-500 text-white uppercase tracking-wider shadow-[0_0_12px_rgba(244,63,94,0.5)]">
                       {game.badge}
                     </span>
                   </div>
                 )}
 
-                {/* Content */}
-                <div className="absolute inset-x-0 bottom-0 p-5 z-10">
-                  <div className="flex flex-col gap-1">
-                    <h4 className="font-black font-display text-xl sm:text-2xl uppercase italic tracking-wider text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                      {game.name}
-                    </h4>
-                    <div className="flex items-center justify-between">
-                      <p className="text-[10px] sm:text-xs text-white/70 font-medium uppercase tracking-widest">{game.description}</p>
-                      <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
-                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse" />
-                        <span className="text-[10px] text-white/90 font-bold">{game.players}</span>
-                      </div>
-                    </div>
-                  </div>
+                {/* Live players badge */}
+                <div className="absolute top-3 right-3 z-20 flex items-center gap-1 px-2 py-0.5 rounded-full bg-black/50 backdrop-blur-sm border border-white/10">
+                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.8)] animate-pulse" />
+                  <span className="text-[9px] text-white/80 font-bold">{game.players}</span>
                 </div>
 
-                {/* Simple hover indicator */}
-                <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
-                  <ChevronRight className="w-6 h-6 text-white" />
+                {/* Content */}
+                <div className="absolute inset-x-0 bottom-0 p-3.5 z-10">
+                  <h4 className="font-bold font-display text-sm text-white leading-tight mb-0.5">
+                    {game.name}
+                  </h4>
+                  <p className="text-[10px] text-white/50 font-medium leading-tight">
+                    {game.description}
+                  </p>
                 </div>
               </motion.div>
             </Link>

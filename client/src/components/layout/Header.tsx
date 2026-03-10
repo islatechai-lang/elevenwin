@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useAppStore } from "@/lib/store";
-import { Coins, LogIn, LogOut, Wallet, User, ChevronDown } from "lucide-react";
+import { Coins, LogIn, LogOut, Wallet, User, ChevronDown, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/hooks/use-auth";
 import { Link } from "wouter";
@@ -55,12 +55,19 @@ export function Header() {
               key="user-info"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="flex items-center gap-3"
+              className="flex items-center gap-2"
             >
-              {/* Balance Pill */}
-              <div className="flex items-center gap-1.5 bg-white/5 rounded-full px-3 py-1.5 border border-white/10">
-                <Coins className="w-4 h-4 text-primary" />
-                <span className="font-bold text-sm tracking-tight text-white">₱{balance.toLocaleString()}</span>
+              {/* Balance Pill + Add Funds */}
+              <div className="flex items-center gap-0">
+                <div className="flex items-center gap-1.5 bg-white/5 rounded-l-full px-3 py-1.5 border border-white/10 border-r-0">
+                  <Coins className="w-4 h-4 text-primary" />
+                  <span className="font-bold text-sm tracking-tight text-white">₱{balance.toLocaleString()}</span>
+                </div>
+                <Link href="/deposit">
+                  <button className="flex items-center justify-center w-8 h-[34px] bg-primary/20 hover:bg-primary/30 rounded-r-full border border-primary/30 active:scale-95 transition-all">
+                    <Plus className="w-3.5 h-3.5 text-primary" />
+                  </button>
+                </Link>
               </div>
 
               {/* Profile Avatar + Dropdown */}
