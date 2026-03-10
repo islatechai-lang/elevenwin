@@ -13,6 +13,7 @@ import Plinko from "@/pages/games/Plinko";
 import HarmonicWheel from "@/pages/games/HarmonicWheel";
 import Wallet from "@/pages/Wallet";
 import Profile from "@/pages/Profile";
+import DepositPage from "@/pages/DepositPage";
 
 import { useAppStore } from "@/lib/store";
 import AuthPage from "@/pages/AuthPage";
@@ -29,6 +30,7 @@ function Router() {
         <Route path="/games/plinko" component={Plinko} />
         <Route path="/games/harmonic-wheel" component={HarmonicWheel} />
         <Route path="/wallet" component={Wallet} />
+        <Route path="/deposit" component={DepositPage} />
         <Route path="/profile" component={Profile} />
         <Route component={NotFound} />
       </Switch>

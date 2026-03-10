@@ -2,15 +2,11 @@ import { useAppStore } from "@/lib/store";
 import { format } from "date-fns";
 import { ArrowDownToLine, ArrowUpFromLine, Coins, Plus, History, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export default function Wallet() {
-  const { balance, transactions, updateBalance, addTransaction } = useAppStore();
-
-  const handleTopUp = (amount: number) => {
-    updateBalance(amount);
-    addTransaction(amount, 'deposit');
-  };
+  const { balance, transactions } = useAppStore();
+  const [, navigate] = useLocation();
 
   return (
     <div className="space-y-6 px-4 pt-4 pb-8">
@@ -33,7 +29,10 @@ export default function Wallet() {
           </div>
 
           <div className="flex gap-3">
-            <button className="flex-1 bg-background text-foreground rounded-xl py-3 font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+            <button
+              onClick={() => navigate("/deposit")}
+              className="flex-1 bg-background text-foreground rounded-xl py-3 font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform"
+            >
               <Plus className="w-4 h-4" /> Top Up
             </button>
             <button className="flex-1 bg-black/20 text-white rounded-xl py-3 font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
@@ -93,15 +92,6 @@ export default function Wallet() {
             ))}
           </div>
         )}
-      </div>
-
-      {/* Dev Tool: Fake Top Up */}
-      <div className="pt-8 opacity-50 hover:opacity-100 transition-opacity">
-        <p className="text-xs text-center mb-2 text-muted-foreground">Development Test Tools</p>
-        <div className="flex justify-center gap-2">
-          <button onClick={() => handleTopUp(1000)} className="text-xs bg-secondary px-3 py-1 rounded-full">+₱1,000</button>
-          <button onClick={() => handleTopUp(5000)} className="text-xs bg-secondary px-3 py-1 rounded-full">+₱5,000</button>
-        </div>
       </div>
     </div>
   );
