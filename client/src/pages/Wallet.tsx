@@ -33,7 +33,7 @@ export default function Wallet() {
               onClick={() => navigate("/deposit")}
               className="flex-1 bg-background text-foreground rounded-xl py-3 font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform"
             >
-              <Plus className="w-4 h-4" /> Top Up
+              <Plus className="w-4 h-4" /> Add Funds
             </button>
             <button className="flex-1 bg-black/20 text-white rounded-xl py-3 font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
               <ArrowUpFromLine className="w-4 h-4" /> Withdraw

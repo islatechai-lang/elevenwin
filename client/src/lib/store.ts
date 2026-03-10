@@ -58,11 +58,14 @@ export const useAppStore = create<AppState>((set, get) => ({
   setTransactions: (transactions) => set({ transactions }),
   addTransaction: async (amount, type) => {
     const { user } = get();
+    // Using Timestamp.now() for proper Firestore serialization instead of raw Date object
+    const { Timestamp } = await import('firebase/firestore');
+
     const newTransaction = {
       id: Math.random().toString(36).substring(7),
       amount,
       type,
-      date: new Date()
+      date: Timestamp.now()
     };
 
     if (user) {
